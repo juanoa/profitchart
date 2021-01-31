@@ -1,9 +1,11 @@
 import React from 'react'
 
+import {AppRouter} from "./routers/AppRouter";
+
 export const App = () => {
-  return (
-    <>
-      <h1>profitchart</h1>
-    </>
-  );
+    return (
+        <>
+            <AppRouter />
+        </>
+    );
 }

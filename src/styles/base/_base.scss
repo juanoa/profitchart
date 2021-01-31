@@ -1,0 +1,30 @@
+* {
+  font-family: -apple-system, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper{
+  position: relative;
+  top: 0;
+  height: 100vh;
+
+  &.wrapper-full-page{
+    min-height: 100vh;
+    height: auto;
+  }
+}
+
+.main-panel {
+  background-color: $lighter-gray;
+  float: right;
+  position: relative;
+  width: calc(100% - 260px);
+  height: 100vh;
+}
+
+.content {
+  padding: 0 30px 30px 30px;
+}

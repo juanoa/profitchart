@@ -1,0 +1,35 @@
+.navbar__sidebar {
+  background-color: $dark-gray;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  bottom: 0;
+  width: 260px;
+  left: 0;
+  z-index: 1030;
+}
+
+.navbar__link {
+  display: block;
+  color: $white;
+  border-radius: 0 100px 100px 0;
+  margin: 10px 20px 10px 0;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.navbar__link.active {
+  background-color: $light-primary;
+
+  color: $white;
+}
+
+.navbar__logo {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar__logo img {
+  width: 40%;
+}

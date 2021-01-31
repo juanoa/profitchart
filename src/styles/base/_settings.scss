@@ -1,0 +1,14 @@
+$primary: #4353FF;
+$dark-primary: darken($color: $primary, $amount: 5);
+$light-primary: lighten($color: $primary, $amount: 5);
+$red: #ff695d;
+$yellow: #ffbe44;
+$green: #08c15c;
+$dark-gray: #212831;
+$light-gray: #c1c1c1;
+$lighter-gray: #f9faff;
+$white: #fff;
+
+h1, h2, h3, h4, h4, h6, p {
+  color: $dark-gray
+}
