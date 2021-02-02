@@ -1,0 +1,79 @@
+.toast__container {
+  background-color: $white;
+  position: absolute;
+  margin-top: 30px;
+  margin-right: 30px;
+  text-align:left;
+  padding: 21px 0;
+  border-radius:4px;
+  max-width: 500px;
+  top: 0;
+  right: 0;
+  box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
+}
+
+.toast__container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-top-left-radius:4px;
+  border-bottom-left-radius: 4px;
+
+}
+
+.toast__icon{
+  position:absolute;
+  top:50%;
+  left:22px;
+  transform:translateY(-80%);
+  width:14px;
+  height:14px;
+  padding: 7px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.toast__icon span {
+  font-size: 20px;
+}
+
+.toast__type {
+  color: $dark-gray;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.toast__message {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $dark-gray;
+}
+
+.toast__content{
+  padding-left:70px;
+  padding-right:60px;
+}
+
+.toast__close {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 14px;
+  cursor:pointer;
+  height: 14px;
+  color:$light-gray;
+  transform: translateY(-50%);
+}
+
+.toast__success:before{
+  background-color:$green;
+}
+
+.toast__error:before{
+  background-color:$red;
+}

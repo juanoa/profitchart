@@ -1,0 +1,68 @@
+import React, {useEffect, useState} from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+
+import {LoginScreen} from "../components/auth/LoginScreen";
+import {DashboardRouter} from "./DashboardRouter";
+import {Toast} from "../components/Toast";
+import {auth} from "../config/firebase-config";
+import {login} from "../actions/auth";
+import {Loading} from "../components/Loading";
+import {PrivateRoute} from "./PrivateRoute";
+import {PublicRoute} from "./PublicRoute";
+
+export const AppRouter = () => {
+
+    const dispatch = useDispatch()
+
+    const [checking, setChecking] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user?.uid){
+                dispatch(login(user.uid, user.email))
+                setIsLoggedIn(true)
+            } else {
+                setIsLoggedIn(false)
+            }
+            setChecking(false)
+        })
+    }, [dispatch, setChecking, setIsLoggedIn]);
+
+
+    const {msgToast, typeToast} = useSelector(state => state.ui)
+
+    if (checking){
+        return (
+            <Loading />
+        )
+    }
+
+    return (
+        <Router>
+            <div>
+                {
+                    msgToast &&
+                    <Toast type={typeToast} msg={msgToast} />
+                }
+                <Switch>
+                    <PublicRoute
+                        exact
+                        path='/login'
+                        component={LoginScreen}
+                        isAuthenticated={isLoggedIn}
+                    />
+                    <PrivateRoute
+                        path='/'
+                        component={DashboardRouter}
+                        isAuthenticated={isLoggedIn}
+                    />
+                </Switch>
+            </div>
+        </Router>
+    );
+};

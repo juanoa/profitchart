@@ -33,3 +33,29 @@
 .navbar__logo img {
   width: 40%;
 }
+
+.navbar__logout {
+  background-color: $red;
+  bottom: 0;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 5px 15px;
+  position: absolute;
+}
+
+.navbar__version {
+  color: white;
+  font-size: 12px;
+  padding: 5px 15px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
+
+.navbar__email {
+  color: $light-gray;
+  text-align: center;
+}

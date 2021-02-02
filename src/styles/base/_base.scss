@@ -28,3 +28,18 @@ body {
 .content {
   padding: 0 30px 30px 30px;
 }
+
+.border-bottom-red {
+  border-bottom: 2px solid $red;
+  padding-bottom: 5px;
+}
+
+.border-bottom-yellow {
+  border-bottom: 2px solid $yellow;
+  padding-bottom: 5px;
+}
+
+.border-bottom-green {
+  border-bottom: 2px solid $green;
+  padding-bottom: 5px;
+}
