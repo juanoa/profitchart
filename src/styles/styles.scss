@@ -1,12 +1,15 @@
 // Base
 @import 'base/settings';
 @import 'base/base';
+@import 'base/grid';
+@import 'base/card';
+@import 'base/buttons';
 
 // Components
-@import 'components/buttons';
 @import 'components/navbar';
 @import 'components/toast';
+@import 'components/loading';
+@import 'components/header';
 
 @import 'components/auth';
 @import 'components/home';
-@import 'components/loading';
