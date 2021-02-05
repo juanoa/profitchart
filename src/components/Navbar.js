@@ -37,7 +37,6 @@ export const Navbar = () => {
             <NavLink
                 activeClassName="active"
                 className="navbar__link"
-                exact
                 to="/accounts"
             >
                 Accounts
@@ -46,7 +45,6 @@ export const Navbar = () => {
             <NavLink
                 activeClassName="active"
                 className="navbar__link"
-                exact
                 to="/configuration"
             >
                 Configuration

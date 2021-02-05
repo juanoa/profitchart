@@ -5,6 +5,7 @@ import {Navbar} from "../components/Navbar";
 import {HomeScreen} from "../components/dashboard/HomeScreen";
 import {AccountsScreen} from "../components/accounts/AccountsScreen";
 import {ConfigurationScreen} from "../components/configuration/ConfigurationScreen";
+import {CreateAccountScreen} from "../components/accounts/CreateAccountScreen";
 
 export const DashboardRouter = () => {
     return (
@@ -23,6 +24,12 @@ export const DashboardRouter = () => {
                             exact
                             path='/accounts'
                             component={AccountsScreen}
+                        />
+
+                        <Route
+                            exact
+                            path='/accounts/create'
+                            component={CreateAccountScreen}
                         />
 
                         <Route

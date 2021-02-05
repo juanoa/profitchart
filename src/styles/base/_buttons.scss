@@ -37,8 +37,19 @@
   }
 }
 
+.btn-success {
+  background-color: $green;
+
+  &:disabled {
+    background-color: lighten($color: $green, $amount: 10) ;
+  }
+  &:hover {
+    background-color: darken($color: $green, $amount: 10) ;
+  }
+}
+
 .btn-lg {
-  padding: 10px 15px 10px 15px;
+  padding: 10px 20px 10px 20px;
   font-size: 1.15rem;
 }
 
