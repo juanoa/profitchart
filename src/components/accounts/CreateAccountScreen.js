@@ -1,8 +1,10 @@
 import React from 'react';
-import {Header} from "../Header";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+
+import {Header} from "../Header";
 import {useForm} from "../../hooks/useForm";
+import {startCreateAccount} from "../../actions/accounts";
 
 export const CreateAccountScreen = () => {
 
@@ -21,7 +23,7 @@ export const CreateAccountScreen = () => {
 
     const handleForm = (e) => {
         e.preventDefault()
-
+        dispatch(startCreateAccount(name, type, description, color, currency))
     }
 
     return (
