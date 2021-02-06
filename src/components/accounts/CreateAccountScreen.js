@@ -1,12 +1,33 @@
 import React from 'react';
 import {Header} from "../Header";
 import {NavLink} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useForm} from "../../hooks/useForm";
 
 export const CreateAccountScreen = () => {
+
+    const dispatch = useDispatch()
+    const {loading} = useSelector (state => state.ui)
+
+    const [formValues, handleInputChanges] = useForm({
+        name: '',
+        type: '',
+        description: '',
+        color: '',
+        currency: ''
+    })
+
+    const {name, type, description, color, currency} = formValues
+
+    const handleForm = (e) => {
+        e.preventDefault()
+
+    }
+
     return (
         <>
             <Header title="➕ Create Account" />
-            <form className="card">
+            <form className="card" onSubmit={handleForm}>
 
                 <div className="row mb-4">
                     <div className="col-md-6">
@@ -15,6 +36,9 @@ export const CreateAccountScreen = () => {
                             name="name"
                             type="text"
                             className="input"
+                            autoComplete="off"
+                            value={name}
+                            onChange={handleInputChanges}
                         />
                     </div>
                     <div className="col-md-6">
@@ -23,6 +47,8 @@ export const CreateAccountScreen = () => {
                             name="type"
                             type="text"
                             className="input"
+                            value={type}
+                            onChange={handleInputChanges}
                         />
                     </div>
                 </div>
@@ -30,6 +56,8 @@ export const CreateAccountScreen = () => {
                 <textarea
                     name="description"
                     className="text-area"
+                    value={description}
+                    onChange={handleInputChanges}
                 />
                 <div className="row mt-4 mb-4">
                     <div className="col-md-6">
@@ -38,6 +66,8 @@ export const CreateAccountScreen = () => {
                             name="color"
                             type="text"
                             className="input"
+                            value={color}
+                            onChange={handleInputChanges}
                         />
                     </div>
                     <div className="col-md-6">
@@ -46,6 +76,8 @@ export const CreateAccountScreen = () => {
                             name="currency"
                             type="text"
                             className="input"
+                            value={currency}
+                            onChange={handleInputChanges}
                         />
                     </div>
                 </div>
@@ -58,14 +90,13 @@ export const CreateAccountScreen = () => {
                         Cancel
                     </div>
                 </NavLink>
-                <NavLink
-                    exact
-                    to="/accounts"
+                <button
+                    type="submit"
+                    className="btn btn-success btn-lg ml-2"
+                    disabled={loading}
                 >
-                    <div className="btn btn-success btn-lg ml-2">
-                        Save
-                    </div>
-                </NavLink>
+                    Save
+                </button>
             </form>
         </>
     );
