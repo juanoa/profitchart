@@ -1,5 +1,7 @@
 import {finishLoading, setToast, startLoading} from "./ui";
 import {db} from "../config/firebase-config";
+import {loadAcconts} from "../helpers/loadAccounts";
+import {types} from "../types/types";
 
 export const startCreateAccount = (name, type, description, color, currency) => {
     return async (dispatch, getState) => {
@@ -16,8 +18,29 @@ export const startCreateAccount = (name, type, description, color, currency) => 
             updates: []
         }
 
-        const doc = await db.collection(`${uid}/profitchart/account`).add(newAccount)
+        const doc = await db.collection(`${uid}/profitchart/accounts`).add(newAccount)
+        dispatch(addNewAccount(doc.id, newAccount))
         dispatch(finishLoading())
         dispatch(setToast('The account was create successfully', 'success'))
     }
 }
+
+export const addNewAccount = (id, account) => ({
+    type: types.accountsAddNew,
+    payload: {
+        id,
+        ...account
+    }
+})
+
+export const startLoadingAccounts = (uid) => {
+    return async (dispatch) => {
+        const accounts = await loadAcconts(uid)
+        dispatch(setAccounts(accounts))
+    }
+}
+
+export const setAccounts = (accounts) => ({
+    type: types.accountsLoad,
+    payload: accounts
+})

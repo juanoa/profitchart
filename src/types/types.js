@@ -6,4 +6,7 @@ export const types = {
     uiRemoveToast: '[UI] Remove Toast',
     uiStartLoading: '[UI] Start Loading',
     uiFinishLoading: '[UI] Finish Loading',
+
+    accountsLoad: '[Accounts] Load accounts',
+    accountsAddNew: '[Accounts] Add new account',
 }

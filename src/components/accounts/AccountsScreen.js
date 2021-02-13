@@ -1,8 +1,13 @@
 import React from 'react';
-import {Header} from "../Header";
 import {NavLink} from "react-router-dom";
+import {useSelector} from "react-redux";
+
+import {Header} from "../Header";
 
 export const AccountsScreen = () => {
+
+    const {accounts} = useSelector(state => state.accounts)
+
     return (
         <>
             <Header title="👛 Accounts" />
@@ -17,32 +22,23 @@ export const AccountsScreen = () => {
             </NavLink>
 
             <div className="row">
-                <div className="col-6">
-                    <div className="card">
-                        <div className="row">
-                            <div className="col-4">
-                                <p>Foto</p>
-                            </div>
-                            <div className="col-8">
-                                <h3>Cuenta 23</h3>
-                                <p>Hola que tal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-6">
-                    <div className="card">
-                        <div className="row">
-                            <div className="col-4">
-                                <p>Foto</p>
-                            </div>
-                            <div className="col-8">
-                                <h3>Cuenta 23</h3>
-                                <p>Hola que tal</p>
+                {
+                    accounts.map(account => (
+                        <div className="col-md-6 mb-4" key={account.id}>
+                            <div className="card">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <p>{account.type}</p>
+                                    </div>
+                                    <div className="col-8">
+                                        <h3>{account.name}</h3>
+                                        <p>{account.description}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    ))
+                }
             </div>
         </>
     );

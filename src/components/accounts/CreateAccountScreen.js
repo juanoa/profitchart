@@ -24,6 +24,7 @@ export const CreateAccountScreen = () => {
     const handleForm = (e) => {
         e.preventDefault()
         dispatch(startCreateAccount(name, type, description, color, currency))
+        return <Redirect to={"/"} />
     }
 
     return (

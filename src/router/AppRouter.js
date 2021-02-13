@@ -13,6 +13,7 @@ import {login} from "../actions/auth";
 import {Loading} from "../components/Loading";
 import {PrivateRoute} from "./PrivateRoute";
 import {PublicRoute} from "./PublicRoute";
+import {startLoadingAccounts} from "../actions/accounts";
 
 export const AppRouter = () => {
 
@@ -26,6 +27,8 @@ export const AppRouter = () => {
             if (user?.uid){
                 dispatch(login(user.uid, user.email))
                 setIsLoggedIn(true)
+
+                dispatch(startLoadingAccounts(user.uid))
             } else {
                 setIsLoggedIn(false)
             }
