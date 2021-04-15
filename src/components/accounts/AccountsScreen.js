@@ -4,6 +4,11 @@ import {useSelector} from "react-redux";
 
 import {Header} from "../Header";
 
+// Icons: https://www.flaticon.es/packs/accounting-3?word=ahorro
+import Savings from './img/savings.png'
+import Investments from './img/investments.png'
+import Others from './img/others.png'
+
 export const AccountsScreen = () => {
 
     const {accounts} = useSelector(state => state.accounts)
@@ -27,10 +32,19 @@ export const AccountsScreen = () => {
                         <div className="col-md-6 mb-4" key={account.id}>
                             <div className="card">
                                 <div className="row">
-                                    <div className="col-4">
-                                        <p>{account.type}</p>
+                                    <div className="col-3 text-center">
+                                        {
+                                            account.type === 'savings' && <img src={Savings} width={'75%'} />
+                                        }
+                                        {
+                                            account.type === 'investment' && <img src={Investments} width={'75%'} />
+                                        }
+                                        {
+                                            account.type === 'other' && <img src={Others} width={'75%'} />
+                                        }
+                                        <p>{account.currency}</p>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-9">
                                         <h3>{account.name}</h3>
                                         <p>{account.description}</p>
                                     </div>
