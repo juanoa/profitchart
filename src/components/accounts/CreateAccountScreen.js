@@ -46,13 +46,16 @@ export const CreateAccountScreen = () => {
                     </div>
                     <div className="col-md-6">
                         <label className="label">Type</label>
-                        <input
+                        <select
                             name="type"
-                            type="text"
-                            className="input"
                             value={type}
                             onChange={handleInputChanges}
-                        />
+                            className="input-select"
+                        >
+                            <option value="savings" selected>Savings</option>
+                            <option value="investment">Investment</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                 </div>
                 <label className="label">Description</label>
@@ -65,23 +68,29 @@ export const CreateAccountScreen = () => {
                 <div className="row mt-4 mb-4">
                     <div className="col-md-6">
                         <label className="label">Color</label>
-                        <input
+                        <select
                             name="color"
-                            type="text"
-                            className="input"
                             value={color}
                             onChange={handleInputChanges}
-                        />
+                            className="input-select"
+                        >
+                            <option value="#ff695d" selected>Red</option>
+                            <option value="#ffbe44">Yellow</option>
+                            <option value="#08c15c">Green</option>
+                        </select>
                     </div>
                     <div className="col-md-6">
                         <label className="label">Currency</label>
-                        <input
+                        <select
                             name="currency"
-                            type="text"
-                            className="input"
                             value={currency}
                             onChange={handleInputChanges}
-                        />
+                            className="input-select"
+                        >
+                            <option value="EUR" selected>EUR</option>
+                            <option value="USD">USD</option>
+                            <option value="GBP">GBP</option>
+                        </select>
                     </div>
                 </div>
 

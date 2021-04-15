@@ -34,13 +34,13 @@ export const AccountsScreen = () => {
                                 <div className="row">
                                     <div className="col-3 text-center">
                                         {
-                                            account.type === 'savings' && <img src={Savings} width={'75%'} />
+                                            account.type === 'savings' && <img src={Savings} alt="savings" width={'75%'} />
                                         }
                                         {
-                                            account.type === 'investment' && <img src={Investments} width={'75%'} />
+                                            account.type === 'investment' && <img src={Investments} alt="investments" width={'75%'} />
                                         }
                                         {
-                                            account.type === 'other' && <img src={Others} width={'75%'} />
+                                            account.type === 'other' && <img src={Others} alt="other" width={'75%'} />
                                         }
                                         <p>{account.currency}</p>
                                     </div>
