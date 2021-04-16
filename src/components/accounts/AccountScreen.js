@@ -147,7 +147,7 @@ export const AccountScreen = () => {
                     <tr>
                         <th>Year</th>
                         <th>Month</th>
-                        <th>Value</th>
+                        <th className="align-right">Value</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -156,7 +156,7 @@ export const AccountScreen = () => {
                             <tr key={`${update.year}${update.month}`}>
                                 <td>{update.year}</td>
                                 <td>{getMonth(update.month)}</td>
-                                <td>{update.value} <small>{currency}</small></td>
+                                <td className="align-right">{update.value} <small>{currency}</small></td>
                             </tr>
                         ))
                     }
