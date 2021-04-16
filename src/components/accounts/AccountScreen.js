@@ -72,7 +72,7 @@ export const AccountScreen = () => {
                         scales: {
                             yAxes: [{
                                 display: false, // hides the vertical scale
-                                stacked: true, // stacks the bars on the y axis
+                                stacked: false, // stacks the bars on the y axis
                                 ticks: {
                                     beginAtZero: true,
                                     min: 0
