@@ -31,7 +31,7 @@ export const Navbar = () => {
                 exact
                 to="/"
             >
-                Home
+                Dashboard
             </NavLink>
 
             <NavLink

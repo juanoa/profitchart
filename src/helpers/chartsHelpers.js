@@ -3,20 +3,22 @@ export const getAccountsSum = (accounts) => {
     const values = []
 
     accounts.forEach(account => {
-        account.updates.forEach(update => {
-            const label = getMonthYearString(update)
-            const index = labels.findIndex(function (arrayLabel) {
-                return arrayLabel === label
+        if (!account.archived) {
+            account.updates.forEach(update => {
+                const label = getMonthYearString(update)
+                const index = labels.findIndex(function (arrayLabel) {
+                    return arrayLabel === label
+                })
+
+                if (index === -1) {
+                    labels.push(label)
+                    values.push(parseFloat(update.value))
+                } else {
+                    values[index] += parseFloat(update.value)
+                }
+
             })
-
-            if (index === -1) {
-                labels.push(label)
-                values.push(parseFloat(update.value))
-            } else {
-                values[index] += parseFloat(update.value)
-            }
-
-        })
+        }
     })
 
     return {labels, values}
