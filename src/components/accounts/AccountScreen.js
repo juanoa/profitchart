@@ -16,8 +16,10 @@ export const AccountScreen = () => {
 
     const {accounts} = useSelector(state => state.accounts)
     const {loading} = useSelector (state => state.ui)
+    console.log(accounts)
 
     const {id} = useParams()
+
     const account = accounts.find(function (a) {
         return a.id === id
     })

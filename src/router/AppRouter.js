@@ -28,11 +28,13 @@ export const AppRouter = () => {
                 dispatch(login(user.uid, user.email))
                 setIsLoggedIn(true)
 
-                dispatch(startLoadingAccounts(user.uid))
+                dispatch(startLoadingAccounts(user.uid)).then(r => {
+                    setChecking(false)
+                })
             } else {
                 setIsLoggedIn(false)
+                setChecking(false)
             }
-            setChecking(false)
         })
     }, [dispatch, setChecking, setIsLoggedIn]);
 
