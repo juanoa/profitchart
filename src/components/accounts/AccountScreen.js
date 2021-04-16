@@ -152,7 +152,7 @@ export const AccountScreen = () => {
                     </thead>
                     <tbody>
                     {
-                        updates.map(update => (
+                        updates.reverse().map(update => (
                             <tr key={`${update.year}${update.month}`}>
                                 <td>{update.year}</td>
                                 <td>{getMonth(update.month)}</td>
