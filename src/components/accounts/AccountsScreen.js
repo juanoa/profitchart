@@ -47,6 +47,14 @@ export const AccountsScreen = () => {
                                     <div className="col-9">
                                         <h3>{account.name}</h3>
                                         <p>{account.description}</p>
+                                        <NavLink
+                                            exact
+                                            to={`/accounts/${account.id}`}
+                                        >
+                                            <div className="btn btn-primary">
+                                                More Info
+                                            </div>
+                                        </NavLink>
                                     </div>
                                 </div>
                             </div>

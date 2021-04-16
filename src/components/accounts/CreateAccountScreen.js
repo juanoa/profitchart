@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {Header} from "../Header";
@@ -9,14 +9,15 @@ import {startCreateAccount} from "../../actions/accounts";
 export const CreateAccountScreen = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const {loading} = useSelector (state => state.ui)
 
     const [formValues, handleInputChanges] = useForm({
         name: '',
-        type: '',
+        type: 'savings',
         description: '',
-        color: '',
-        currency: ''
+        color: '#ff695d',
+        currency: 'EUR'
     })
 
     const {name, type, description, color, currency} = formValues
@@ -24,14 +25,13 @@ export const CreateAccountScreen = () => {
     const handleForm = (e) => {
         e.preventDefault()
         dispatch(startCreateAccount(name, type, description, color, currency))
-        return <Redirect to={"/"} />
+        history.push('/accounts')
     }
 
     return (
         <>
             <Header title="➕ Create Account" />
             <form className="card" onSubmit={handleForm}>
-
                 <div className="row mb-4">
                     <div className="col-md-6">
                         <label className="label">Name</label>
@@ -52,7 +52,7 @@ export const CreateAccountScreen = () => {
                             onChange={handleInputChanges}
                             className="input-select"
                         >
-                            <option value="savings" selected>Savings</option>
+                            <option value="savings">Savings</option>
                             <option value="investment">Investment</option>
                             <option value="other">Other</option>
                         </select>
@@ -74,7 +74,7 @@ export const CreateAccountScreen = () => {
                             onChange={handleInputChanges}
                             className="input-select"
                         >
-                            <option value="#ff695d" selected>Red</option>
+                            <option value="#ff695d">Red</option>
                             <option value="#ffbe44">Yellow</option>
                             <option value="#08c15c">Green</option>
                         </select>
@@ -87,7 +87,7 @@ export const CreateAccountScreen = () => {
                             onChange={handleInputChanges}
                             className="input-select"
                         >
-                            <option value="EUR" selected>EUR</option>
+                            <option value="EUR">EUR</option>
                             <option value="USD">USD</option>
                             <option value="GBP">GBP</option>
                         </select>

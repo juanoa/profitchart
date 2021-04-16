@@ -1,0 +1,50 @@
+table {
+  border-spacing: 1px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  * {
+    position: relative
+  }
+
+  td, th {
+    padding-left: 8px
+  }
+
+  thead tr {
+    height: 60px;
+    background: $light-primary;
+    color: white;
+    font-size: 16px;
+  }
+
+  tbody tr {
+    height: 48px;
+    border-bottom: 1px solid #E3F1D5;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+
+  td, th {
+    text-align: left;
+
+    &.l {
+      text-align: right
+    }
+
+    &.c {
+      text-align: center
+    }
+
+    &.r {
+      text-align: center
+    }
+  }
+}

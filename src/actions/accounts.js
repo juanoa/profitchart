@@ -33,6 +33,39 @@ export const addNewAccount = (id, account) => ({
     }
 })
 
+export const startCreateUpdate = (account, year, month, value) => {
+    return async (dispatch, getState) => {
+        dispatch(startLoading())
+        const {uid} = getState().auth
+
+        const newUpdate = {
+            year,
+            month,
+            value
+        }
+
+        account.updates.push(newUpdate)
+        const accountToFirestore = {...account}
+        delete accountToFirestore.id
+
+        await db.doc(`${uid}/profitchart/accounts/${account.id}`).update(accountToFirestore)
+        dispatch(updateAccount(account.id, accountToFirestore))
+        dispatch(finishLoading())
+        dispatch(setToast('The update was create successfully', 'success'))
+    }
+}
+
+const updateAccount = (id, account) => ({
+    type: types.accountsUpdated,
+    payload: {
+        id,
+        account: {
+            id,
+            ...account
+        }
+    }
+})
+
 export const startLoadingAccounts = (uid) => {
     return async (dispatch) => {
         const accounts = await loadAcconts(uid)

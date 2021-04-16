@@ -19,6 +19,16 @@ export const accountsReducer = (state = initialState, action) => {
                 accounts: [action.payload, ...state.accounts]
             }
 
+        case types.accountsUpdated:
+            return {
+                ...state,
+                accounts: state.accounts.map(
+                    account => account.id === action.payload.id
+                        ? action.payload.account
+                        : account
+                )
+            }
+
         default:
             return state
     }

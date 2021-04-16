@@ -9,4 +9,5 @@ export const types = {
 
     accountsLoad: '[Accounts] Load accounts',
     accountsAddNew: '[Accounts] Add new account',
+    accountsUpdated: '[Accounts] Update account',
 }
