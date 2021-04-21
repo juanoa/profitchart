@@ -13,7 +13,7 @@ export const DashboardRouter = () => {
         <div className="wrapper">
             <Navbar />
             <div className="main-panel">
-                <div className="content">
+                <div className="content pb-5">
                     <Switch>
                         <Route
                             exact
@@ -51,7 +51,6 @@ export const DashboardRouter = () => {
                     </Switch>
                 </div>
             </div>
-
         </div>
     );
 };
