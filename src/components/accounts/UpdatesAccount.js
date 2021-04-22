@@ -1,5 +1,5 @@
 import React from 'react'
-import {getMonth} from "../../helpers/getMonth";
+import {UpdateRow} from "./UpdateRow";
 
 export const UpdatesAccount = ({account}) => {
     const {updates, currency} = account
@@ -19,11 +19,7 @@ export const UpdatesAccount = ({account}) => {
                 <tbody>
                 {
                     updatesClone.reverse().map(update => (
-                        <tr key={`${update.year}${update.month}`}>
-                            <td>{update.year}</td>
-                            <td>{getMonth(update.month)}</td>
-                            <td className="align-right">{update.value} <small>{currency}</small></td>
-                        </tr>
+                        <UpdateRow update={update} currency={currency} key={`${update.year}${update.month}`} />
                     ))
                 }
                 </tbody>
