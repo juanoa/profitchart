@@ -1,3 +1,5 @@
+import {accountTypes} from "../types/accountTypes";
+
 export const getAccountsSum = (accounts) => {
     const labels = []
     const values = []
@@ -70,11 +72,39 @@ export const getAccountsForDoughnutChart = (accounts) => {
         });
 
         if (lastMonth) {
-            console.log(lastMonth)
             labels.push(account.name)
             colors.push(account.color)
             data.push(lastMonth.value)
         }
+    })
+
+    return {labels, colors, data}
+}
+
+export const getTypesAccountForDoughnutChart = (accounts) => {
+    const labels = []
+    const colors = []
+    const data = []
+
+    const lastUpdate = getLastUpdate(accounts)
+
+    accountTypes.types.forEach(type => {
+        labels.push(type.name)
+        colors.push(type.color)
+
+        let sum = 0
+        const accountsFilter = accounts.filter(account => account.type === type.slug)
+            console.log(accountsFilter)
+        accountsFilter.forEach(account => {
+            const lastMonth = account.updates.find(function(update) {
+                return update.month === lastUpdate.month && update.year === lastUpdate.year
+            });
+
+            if (lastMonth) {
+                sum += Number(lastMonth.value)
+            }
+        })
+        data.push(sum)
     })
 
     return {labels, colors, data}

@@ -3,6 +3,7 @@ import React from 'react';
 import {Header} from "../Header";
 import {MainChart} from "./MainChart";
 import {AccountsDoughnutChart} from "./AccountsDoughnutChart";
+import {TypesAccountDoughnutChart} from "./TypesAccountDoughnutChart";
 
 export const HomeScreen = () => {
 
@@ -16,7 +17,7 @@ export const HomeScreen = () => {
                     <AccountsDoughnutChart />
                 </div>
                 <div className="col-md-6">
-                    <AccountsDoughnutChart />
+                    <TypesAccountDoughnutChart />
                 </div>
             </div>
         </>
