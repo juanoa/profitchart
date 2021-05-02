@@ -18,7 +18,7 @@ export const Navbar = () => {
     return (
         <div className="navbar__sidebar">
             <div className="navbar__logo">
-                <Link to="/" aria-label="Home page">
+                <Link to="/profitchart/" aria-label="Home page">
                     <img src={logo} alt={logo}/>
                 </Link>
             </div>
@@ -29,7 +29,7 @@ export const Navbar = () => {
                 activeClassName="active"
                 className="navbar__link"
                 exact
-                to="/"
+                to="/profitchart/"
             >
                 Dashboard
             </NavLink>
@@ -37,7 +37,7 @@ export const Navbar = () => {
             <NavLink
                 activeClassName="active"
                 className="navbar__link"
-                to="/accounts"
+                to="/profitchart/accounts"
             >
                 Accounts
             </NavLink>
@@ -45,7 +45,7 @@ export const Navbar = () => {
             <NavLink
                 activeClassName="active"
                 className="navbar__link"
-                to="/configuration"
+                to="/profitchart/configuration"
             >
                 Configuration
             </NavLink>

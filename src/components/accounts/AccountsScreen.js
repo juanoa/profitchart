@@ -19,7 +19,7 @@ export const AccountsScreen = () => {
 
             <NavLink
                 exact
-                to="/accounts/create"
+                to="/profitchart/accounts/create"
             >
                 <div className="btn btn-primary btn-lg mb-4">
                         Create account
@@ -49,7 +49,7 @@ export const AccountsScreen = () => {
                                         <p>{account.description}</p>
                                         <NavLink
                                             exact
-                                            to={`/accounts/${account.id}`}
+                                            to={`/profitchart/accounts/${account.id}`}
                                         >
                                             <div className="btn btn-primary">
                                                 More Info

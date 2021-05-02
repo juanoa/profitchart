@@ -25,7 +25,7 @@ export const CreateAccountScreen = () => {
     const handleForm = (e) => {
         e.preventDefault()
         dispatch(startCreateAccount(name, type, description, color, currency))
-        history.push('/accounts')
+        history.push('/profitchart/accounts')
     }
 
     return (
@@ -96,7 +96,7 @@ export const CreateAccountScreen = () => {
 
                 <NavLink
                     exact
-                    to="/accounts"
+                    to="/profitchart/accounts"
                 >
                     <div className="btn btn-danger btn-lg">
                         Cancel
