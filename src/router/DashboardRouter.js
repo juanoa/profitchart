@@ -17,36 +17,36 @@ export const DashboardRouter = () => {
                     <Switch>
                         <Route
                             exact
-                            path='/'
+                            path='/profitchart/'
                             component={HomeScreen}
                         />
 
                         <Route
                             exact
-                            path='/accounts'
+                            path='/profitchart/accounts'
                             component={AccountsScreen}
                         />
 
                         <Route
                             exact
-                            path='/accounts/create'
+                            path='/profitchart/accounts/create'
                             component={CreateAccountScreen}
                         />
 
                         <Route
                             exact
-                            path='/accounts/:id'
+                            path='/profitchart/accounts/:id'
                             component={AccountScreen}
                         />
 
                         <Route
                             exact
-                            path='/configuration'
+                            path='/profitchart/configuration'
                             component={ConfigurationScreen}
                         />
 
                         <Redirect
-                            to='/'
+                            to='/profitchart/'
                         />
                     </Switch>
                 </div>
