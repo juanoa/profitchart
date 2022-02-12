@@ -10,9 +10,10 @@ export const CreateUpdate = ({account}) => {
 
     const {currency} = account
 
+    const today = new Date()
     const [formValues, handleInputChanges] = useForm({
-        year: '',
-        month: '',
+        year: today.getFullYear(),
+        month: today.getMonth(),
         value: ''
     })
     const {year, month, value} = formValues
@@ -41,15 +42,25 @@ export const CreateUpdate = ({account}) => {
                     </div>
                     <div className="col-md-4">
                         <label>Month</label>
-                        <input
-                            className="input"
-                            autoComplete="off"
-                            type="text"
-                            name="month"
-                            value={month}
-                            onChange={handleInputChanges}
-                            required
-                        />
+                        <select
+                          name="month"
+                          value={month}
+                          onChange={handleInputChanges}
+                          className="input-select"
+                        >
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
                     </div>
                     <div className="col-md-4">
                         <label>Value</label>
