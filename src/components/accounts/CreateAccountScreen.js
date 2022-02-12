@@ -52,9 +52,9 @@ export const CreateAccountScreen = () => {
                             onChange={handleInputChanges}
                             className="input-select"
                         >
-                            <option value="savings">Savings</option>
-                            <option value="investment">Investment</option>
-                            <option value="other">Other</option>
+                            <option value="savings">Savings 💰</option>
+                            <option value="investment">Investment 📈</option>
+                            <option value="other">Other 💶</option>
                         </select>
                     </div>
                 </div>
