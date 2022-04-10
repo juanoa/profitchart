@@ -1,4 +1,6 @@
 import {accountTypes} from "../types/accountTypes";
+import {getSortMonth} from "./getMonth";
+import {getTwoDecimals} from "./floatHelpers";
 
 export const getAccountsSum = (accounts) => {
     const labels = []
@@ -22,6 +24,10 @@ export const getAccountsSum = (accounts) => {
             })
         }
     })
+
+    for (let i = 0; i < values.length; i++) {
+        values[i] = getTwoDecimals(values[i])
+    }
 
     return {labels, values}
 }
@@ -94,7 +100,7 @@ export const getTypesAccountForDoughnutChart = (accounts) => {
 
         let sum = 0
         const accountsFilter = accounts.filter(account => account.type === type.slug)
-            console.log(accountsFilter)
+
         accountsFilter.forEach(account => {
             const lastMonth = account.updates.find(function(update) {
                 return update.month === lastUpdate.month && update.year === lastUpdate.year
@@ -134,5 +140,5 @@ const getLastUpdate = (accounts) => {
 }
 
 const getMonthYearString = (update) => {
-    return `${update.month}/${update.year}`
+    return `${getSortMonth(update.month)}. ${update.year}`
 }

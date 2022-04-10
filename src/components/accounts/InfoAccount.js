@@ -4,7 +4,7 @@ import {startUpdateAccount} from "../../actions/accounts";
 
 export const InfoAccount = ({account}) => {
 
-    const {type, currency, color, date, archived} = account
+    const {type, currency, date, archived} = account
 
     const dispatch = useDispatch()
 
@@ -24,7 +24,6 @@ export const InfoAccount = ({account}) => {
                 <div className="col-md-9">
                     <p>{type}</p>
                     <p>{currency}</p>
-                    <p>{color}</p>
                     <p>{new Date(date).toDateString()}</p>
                 </div>
                 <div className="col-md-3 align-right">
