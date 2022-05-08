@@ -41,7 +41,7 @@ export const startCreateUpdate = (account, year, month, value) => {
         const newUpdate = {
             year,
             month,
-            value
+            value: value.replace(/,/g, '.')
         }
 
         account.updates.push(newUpdate)

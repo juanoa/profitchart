@@ -4,4 +4,30 @@
   font-size: 16px;
   padding: 7px;
   transition: all 0.2s ease-out;
+  text-align: right;
+}
+
+.account__update-row-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+.account__create-update-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.account__create-update-row div {
+  flex-grow: 1;
+  flex-basis: 1rem;
+}
+
+.account__card-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

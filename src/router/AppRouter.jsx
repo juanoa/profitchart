@@ -5,12 +5,12 @@ import {
 } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import {LoginScreen} from "../components/auth/LoginScreen";
+import {LoginPage} from "../pages/auth/LoginPage";
 import {DashboardRouter} from "./DashboardRouter";
-import {Toast} from "../components/Toast";
+import {Toast} from "../layout/Toast";
 import {auth} from "../config/firebase-config";
 import {login} from "../actions/auth";
-import {Loading} from "../components/Loading";
+import {Loading} from "../layout/Loading";
 import {PrivateRoute} from "./PrivateRoute";
 import {PublicRoute} from "./PublicRoute";
 import {startLoadingAccounts} from "../actions/accounts";
@@ -58,7 +58,7 @@ export const AppRouter = () => {
                     <PublicRoute
                         exact
                         path='/login'
-                        component={LoginScreen}
+                        component={LoginPage}
                         isAuthenticated={isLoggedIn}
                     />
                     <PrivateRoute
