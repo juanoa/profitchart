@@ -11,7 +11,7 @@ export const AccountsPage = () => {
   const {accounts} = useSelector(state => state.accounts)
 
   return (
-    <PageLayout title="👛 Accounts">
+    <PageLayout title="Accounts" emoji="👛">
       <NavLink
         exact
         to="/accounts/create"

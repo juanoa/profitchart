@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Header} from "./Header";
 
-const PageLayout = ({title, children}) => {
+const PageLayout = ({title, emoji, children}) => {
+
+  useEffect(() => {
+    document.title = title;
+  }, []);
+  
+  
   return (
     <>
-      <Header title={title}/>
+      <Header title={title} emoji={emoji}/>
       {children}
     </>
   );

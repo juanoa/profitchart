@@ -28,7 +28,7 @@ export const CreateAccountPage = () => {
   }
 
   return (
-    <PageLayout title="➕ Create Account">
+    <PageLayout title="Create Account" emoji="➕">
       <form className="card" onSubmit={handleForm}>
         <div className="row mb-4">
           <div className="col-md-6">

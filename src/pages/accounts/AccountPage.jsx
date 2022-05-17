@@ -17,10 +17,10 @@ export const AccountPage = () => {
   const account = accounts.find(function (a) {
     return a.id === id
   })
-  const {name, description} = account
+  const {name} = account
 
   return (
-    <PageLayout title={`ℹ️ ${name}`}>
+    <PageLayout title={name} emoji="ℹ️">
 
       <h2>Info</h2>
       <InfoAccount account={account}/>

@@ -7,7 +7,7 @@ import PageLayout from "../../layout/PageLayout";
 export const HomePage = () => {
 
   return (
-    <PageLayout title="🏠 Dashboard">
+    <PageLayout title="Dashboard" emoji="🏠">
       <MainChart/>
       <div className="row mt-5">
         <div className="col-md-6">
