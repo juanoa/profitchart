@@ -2,13 +2,18 @@ import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import {startCreateUpdate} from "../../actions/accounts";
+import {months} from "../../config/data/date";
+import {getCurrencyByCode} from "../../repository/config/currency-config-repository";
+import {FormGroup} from "../ui/form/FormGroup";
+import {SelectGroup} from "../ui/form/SelectGroup";
+import {monthsToSelectConverter} from "../../helpers/converters/form/object-select-converter";
 
 export const CreateUpdate = ({account}) => {
 
   const dispatch = useDispatch()
   const {loading} = useSelector(state => state.ui)
 
-  const {currency} = account
+  const currency = getCurrencyByCode(account.currency);
 
   const today = new Date()
   const [formValues, handleInputChanges] = useForm({
@@ -28,53 +33,26 @@ export const CreateUpdate = ({account}) => {
       <form onSubmit={handleForm}>
         <h3>New update</h3>
         <div className="account__create-update-row">
-          <div>
-            <label>Year</label>
-            <input
-              className="input"
-              autoComplete="off"
-              type="text"
-              name="year"
-              value={year}
-              onChange={handleInputChanges}
-              required
-            />
-          </div>
-          <div>
-            <label>Month</label>
-            <select
-              name="month"
-              value={month}
-              onChange={handleInputChanges}
-              className="input-select"
-            >
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
-          </div>
-          <div>
-            <label>Value</label>
-            <input
-              className="input"
-              autoComplete="off"
-              type="text"
-              name="value"
-              placeholder={currency}
-              value={value}
-              onChange={handleInputChanges}
-              required
-            />
-          </div>
+          <FormGroup
+            label="Year"
+            name="year"
+            onChange={handleInputChanges}
+            value={year}
+          />
+          <SelectGroup
+            label="Month"
+            name="month"
+            onChange={handleInputChanges}
+            options={monthsToSelectConverter(months)}
+            value={month}
+          />
+          <FormGroup
+            label="Value"
+            placeholder={currency.symbol}
+            value={value}
+            onChange={handleInputChanges}
+            name="value"
+          />
           <button
             type="submit"
             className="btn btn-success btn-lg mt-3"

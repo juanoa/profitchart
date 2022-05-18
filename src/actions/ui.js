@@ -1,4 +1,4 @@
-import {types} from "../types/types";
+import {types} from "../reducers/types";
 
 export const setToast = (msg, type) => ({
     type: types.uiSetToast,

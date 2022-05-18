@@ -1,5 +1,5 @@
 
-import {types} from "../types/types";
+import {types} from "./types";
 /*
     {
         uid: sadfi23jd52526safjsdaif
