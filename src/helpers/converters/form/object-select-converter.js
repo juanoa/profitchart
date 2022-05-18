@@ -1,1 +1,1 @@
-export const monthsToSelectConverter = (months) => months.map(month => ({value: month.number, label: month.name}));
+export const monthsToSelectConverter = (months) => months.map(month => ({option: month.number, label: month.name}));

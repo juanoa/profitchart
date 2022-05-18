@@ -5,7 +5,7 @@ import {useForm} from "../../hooks/useForm";
 import {startCreateAccount} from "../../actions/accounts";
 import PageLayout from "../../layout/PageLayout";
 import {accountColors, accountTypes} from "../../config/data/account";
-import {currencies} from "../../config/data/currency";
+import {currencies} from "../../config/data/currencies";
 
 export const CreateAccountPage = () => {
 
