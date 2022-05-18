@@ -1,7 +1,7 @@
 import {finishLoading, setToast, startLoading} from "./ui";
 import {db} from "../config/firebase-config";
 import {loadAcconts} from "../helpers/loadAccounts";
-import {types} from "../types/types";
+import {types} from "../reducers/types";
 
 export const startCreateAccount = (name, type, description, color, currency) => {
     return async (dispatch, getState) => {

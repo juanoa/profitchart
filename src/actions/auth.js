@@ -1,4 +1,4 @@
-import {types} from "../types/types";
+import {types} from "../reducers/types";
 import {auth} from "../config/firebase-config";
 import {finishLoading, setToast, startLoading} from "./ui";
 

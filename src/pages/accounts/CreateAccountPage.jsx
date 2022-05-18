@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import {startCreateAccount} from "../../actions/accounts";
 import PageLayout from "../../layout/PageLayout";
+import {accountColors, accountTypes} from "../../config/data/account";
+import {currencies} from "../../config/data/currencies";
 
 export const CreateAccountPage = () => {
 
@@ -50,9 +52,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              <option value="savings">Savings 💰</option>
-              <option value="investment">Investment 📈</option>
-              <option value="other">Other 💶</option>
+              {accountTypes.map(type => <option value={type.id}>{type.name} {type.emoji}</option>)}
             </select>
           </div>
         </div>
@@ -72,9 +72,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              <option value="#ff695d">Red</option>
-              <option value="#ffbe44">Yellow</option>
-              <option value="#08c15c">Green</option>
+              {accountColors.map(color => <option value={color.hex}>{color.name}</option>)}
             </select>
           </div>
           <div className="col-md-6">
@@ -85,9 +83,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-              <option value="GBP">GBP</option>
+              {currencies.map(currency => <option value={currency.code}>{currency.name}</option>)}
             </select>
           </div>
         </div>
