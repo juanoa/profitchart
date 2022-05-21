@@ -6,7 +6,7 @@ interface Props {
   account: Account;
 }
 
-export const UpdatesAccount = ({account}: Props) => {
+export const AccountUpdates = ({account}: Props) => {
   const {updates, currency} = account
 
   const updatesClone = updates.slice()

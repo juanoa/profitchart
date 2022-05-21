@@ -32,7 +32,7 @@ export const LoginPage = () => {
 
   const isFormValid = () => {
     if (password.length < 5) {
-      dispatch(setToast('The password is too short', 'error'))
+      // dispatch(setToast('The password is too short', 'error'))
       return false;
     }
     dispatch(removeToast())

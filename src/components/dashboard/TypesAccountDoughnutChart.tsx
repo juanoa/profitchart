@@ -1,6 +1,6 @@
 import React from 'react'
 import {Doughnut} from "react-chartjs-2";
-import {getTypesAccountForDoughnutChart} from "../../helpers/chartsHelpers";
+import {getTypesAccountForDoughnutChart} from "../../helpers/charts-helpers";
 import {useSelector} from "react-redux";
 
 export const TypesAccountDoughnutChart = () => {
