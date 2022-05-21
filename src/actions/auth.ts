@@ -9,8 +9,8 @@ export const startLoginEmailPassword = (email: string, password: string) => {
             .then( ({user}) => {
                 dispatch(login(user?.uid, user?.email))
             })
-            .catch(e => {
-                dispatch(setToast('User or password are wrong', 'error'))
+            .catch(() => {
+                // dispatch(setToast('User or password are wrong', 'error'))
             })
             .finally(() => {
                 dispatch(finishLoading())

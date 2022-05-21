@@ -1,4 +1,3 @@
-import {AccountTypes} from "../../domain/account/AccountTypes";
 import {AccountType} from "../../domain/account/AccountType";
 import {AccountColor} from "../../domain/account/AccountColor";
 

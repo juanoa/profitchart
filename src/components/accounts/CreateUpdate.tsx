@@ -6,10 +6,11 @@ import {months} from "../../config/data/date-config";
 import {getCurrencyByCode} from "../../repository/config/currency-config-repository";
 import {FormGroup} from "../ui/form/FormGroup";
 import {SelectGroup} from "../ui/form/SelectGroup";
-import {monthsToSelectConverter} from "../../helpers/converters/form/object-select-converter";
+import {monthsToSelectConverter} from "../../helpers/mappers/components/date/months-select-mapper";
 import {Account} from "../../domain/account/Account";
 import {Currency} from "../../domain/currency/Currency";
 import {Optional} from "../../domain/Optional";
+import {AccountUpdate} from "../../domain/account/AccountUpdate";
 
 interface Props {
   account: Account;
@@ -18,7 +19,7 @@ interface Props {
 interface CreateUpdateForm {
   year: number;
   month: number;
-  value: string;
+  value: number | undefined;
 }
 
 export const CreateUpdate = ({account}: Props) => {
@@ -30,16 +31,22 @@ export const CreateUpdate = ({account}: Props) => {
   const currency: Optional<Currency> = getCurrencyByCode(account.currency);
 
   const today = new Date()
+
   const [formValues, handleInputChanges] = useForm<CreateUpdateForm>({
     year: today.getFullYear(),
     month: today.getMonth(),
-    value: ''
+    value: undefined
   })
   const {year, month, value} = formValues
 
   const handleForm = (e: any) => {
-    e.preventDefault()
-    dispatch(startCreateUpdate(account, String(year), String(month), value))
+    e.preventDefault();
+    const update: AccountUpdate = {
+      year,
+      month,
+      value: value || 0
+    };
+    dispatch(startCreateUpdate(account, update));
   }
 
   return (
@@ -62,15 +69,16 @@ export const CreateUpdate = ({account}: Props) => {
           />
           <FormGroup
             label="Value"
-            placeholder={currency?.symbol}
-            value={value}
-            onChange={handleInputChanges}
             name="value"
+            placeholder={currency?.symbol}
+            onChange={handleInputChanges}
+            type="number"
+            value={value}
           />
           <button
             type="submit"
             className="btn btn-success btn-lg mt-3"
-            disabled={loading}
+            disabled={loading || !value}
           >
             Save
           </button>

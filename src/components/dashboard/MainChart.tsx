@@ -1,7 +1,7 @@
 import React from 'react'
 import {Bar} from "react-chartjs-2";
 import {useSelector} from "react-redux";
-import {getAccountsSum, getAccountSumWithLabels} from "../../helpers/chartsHelpers";
+import {getAccountsSum, getAccountSumWithLabels} from "../../helpers/charts-helpers";
 
 export const MainChart = () => {
 

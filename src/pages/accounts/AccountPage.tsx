@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {InfoAccount} from "../../components/accounts/InfoAccount";
-import {UpdatesAccount} from "../../components/accounts/UpdatesAccount";
+import {AccountUpdates} from "../../components/accounts/AccountUpdates";
 import {HistoricalAccountChart} from "../../components/accounts/HistoricalAccountChart";
 import {CreateUpdate} from "../../components/accounts/CreateUpdate";
 import PageLayout from "../../layout/PageLayout";
@@ -29,7 +29,7 @@ export const AccountPage = () => {
 
       <h2>Updates</h2>
       <CreateUpdate account={account}/>
-      <UpdatesAccount account={account}/>
+      <AccountUpdates account={account}/>
     </PageLayout>
   );
 };

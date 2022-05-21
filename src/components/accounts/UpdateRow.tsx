@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {getMonth} from "../../helpers/getMonth";
+import {getMonth} from "../../helpers/get-month";
 import {AccountUpdate} from "../../domain/account/AccountUpdate";
 import {Currency} from "../../domain/currency/Currency";
 

@@ -1,5 +1,5 @@
 export interface AccountUpdate {
-  month: string,
-  year: string,
-  value: string
+  month: number,
+  year: number,
+  value: number
 }

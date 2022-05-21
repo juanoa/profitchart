@@ -1,6 +1,6 @@
 import React from 'react'
 import {Bar} from "react-chartjs-2";
-import {getAccountSum} from "../../helpers/chartsHelpers";
+import {getAccountSum} from "../../helpers/charts-helpers";
 import {Account} from "../../domain/account/Account";
 
 interface Props {
