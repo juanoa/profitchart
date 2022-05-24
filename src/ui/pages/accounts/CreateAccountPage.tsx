@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import PageLayout from "../../layout/PageLayout";
 import {accountColors, accountTypes} from "../../../config/data/account-config";
@@ -19,7 +19,6 @@ export const CreateAccountPage = () => {
 
   const createAccount = useCreateAccount();
 
-  const dispatch = useDispatch()
   const history = useHistory()
   // @ts-ignore
   const {loading} = useSelector(state => state.ui)
@@ -36,8 +35,8 @@ export const CreateAccountPage = () => {
 
   const handleForm = (e: any) => {
     e.preventDefault()
-    // dispatch(startCreateAccount(name, type, description, color, currency))
-    history.push('/account')
+    const {id} = createAccount(name, description, color, currency, type);
+    history.push(`/accounts/${id}`)
   }
 
   return (
@@ -63,7 +62,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {accountTypes.map(type => <option value={type.id}>{type.name} {type.emoji}</option>)}
+              {accountTypes.map(type => <option value={type.id} key={type.id}>{type.name} {type.emoji}</option>)}
             </select>
           </div>
         </div>
@@ -83,7 +82,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {accountColors.map(color => <option value={color.hex}>{color.name}</option>)}
+              {accountColors.map(color => <option value={color.hex} key={color.hex}>{color.name}</option>)}
             </select>
           </div>
           <div className="col-md-6">
@@ -94,7 +93,7 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {currencies.map(currency => <option value={currency.code}>{currency.name}</option>)}
+              {currencies.map(currency => <option value={currency.code} key={currency.code}>{currency.name}</option>)}
             </select>
           </div>
         </div>
