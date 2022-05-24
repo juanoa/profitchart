@@ -11,7 +11,7 @@ export const routes: Array<{path: string; PageComponent: React.ComponentType}> =
     PageComponent: HomePage
   },
   {
-    path: "/account",
+    path: "/accounts",
     PageComponent: AccountsPage
   },
   {
