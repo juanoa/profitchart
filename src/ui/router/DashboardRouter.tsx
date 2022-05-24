@@ -12,11 +12,12 @@ export const DashboardRouter = () => {
         <div className="content pb-5">
           <Switch>
             {
-              routes.map(({path, PageComponent}) => (
+              routes.map(({path, PageComponent}, index) => (
                 <Route
                   exact
                   path={path}
                   component={PageComponent}
+                  key={index}
                 />
               ))
             }

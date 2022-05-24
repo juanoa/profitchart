@@ -5,20 +5,19 @@ const collection = `${firstLevelCollection}/accounts`
 
 export function useAccountFirebaseDao() {
 
-  function findByUserIdOrderByDate(uid: string): Array<AccountFirebaseDto>{
+  async function findByUserIdOrderByDate(uid: string): Promise<Array<AccountFirebaseDto>> {
     const accounts: Array<AccountFirebaseDto> = []
 
-    db.collection(`${uid}/${collection}`)
+    const accountsSnap = await db.collection(`${uid}/${collection}`)
       .orderBy('date', 'desc')
-      .get()
-      .then(accountsSnap => {
-        accountsSnap.forEach(snapChild => {
-          accounts.push(<AccountFirebaseDto>{
-            id: snapChild.id,
-            ...snapChild.data()
-          })
-        })
+      .get();
+
+    accountsSnap.forEach(snapChild => {
+      accounts.push(<AccountFirebaseDto>{
+        id: snapChild.id,
+        ...snapChild.data()
       })
+    })
 
     return accounts
   }

@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
 } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 
 import {LoginPage} from "../pages/auth/LoginPage";
 import {DashboardRouter} from "./DashboardRouter";
@@ -13,12 +13,13 @@ import {login} from "../../infrastructure/components/redux/actions/auth";
 import {Loading} from "../layout/Loading";
 import {PrivateRoute} from "./PrivateRoute";
 import {PublicRoute} from "./PublicRoute";
-import {startLoadingAccounts} from "../../infrastructure/components/redux/actions/accounts";
 import {useAppDispatch} from "../../infrastructure/components/redux/store/store";
+import {useLoadAccounts} from "../../application/usecases/account/load-accounts";
 
 export const AppRouter = () => {
 
     const dispatch = useAppDispatch();
+    const loadAccounts = useLoadAccounts();
 
     const [checking, setChecking] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,9 +29,8 @@ export const AppRouter = () => {
             if (user?.uid){
                 dispatch(login(user.uid, user.email))
                 setIsLoggedIn(true)
-
-                // @ts-ignore
-                dispatch(startLoadingAccounts(user.uid)).then(() => setChecking(false))
+                loadAccounts(user.uid)
+                setChecking(false)
             } else {
                 setIsLoggedIn(false)
                 setChecking(false)

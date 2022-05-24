@@ -8,9 +8,9 @@ export const addNewAccount = (account: Account) => ({
   }
 })
 
-export const startLoadingAccounts = () => ({
+export const loadAccounts = (accounts: Array<Account>) => ({
   type: types.accountsLoad,
-  payload: []
+  payload: [...accounts]
 })
 
 export const setAccounts = (accounts: Array<object>) => ({

@@ -6,7 +6,7 @@ export function useAccountUpdateFirebaseMapper(): BidirectionalMapper<AccountUpd
   function convert(entity: AccountUpdate): AccountUpdateFirebaseDto {
     return {
       month: String(entity.month),
-      year: String(entity.year),
+      year: entity.year,
       value: String(entity.value)
     };
   }

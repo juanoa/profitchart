@@ -5,6 +5,6 @@ export function useLoadAccounts() {
   const accountRepository = useAccountRepository();
 
   return function (uid: string) {
-    accountRepository.load(uid);
+    accountRepository.load(uid).then();
   }
 }

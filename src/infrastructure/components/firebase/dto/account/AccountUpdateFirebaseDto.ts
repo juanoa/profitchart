@@ -1,5 +1,5 @@
 export interface AccountUpdateFirebaseDto {
-  year: string;
+  year: number;
   month: string;
   value: string;
 }

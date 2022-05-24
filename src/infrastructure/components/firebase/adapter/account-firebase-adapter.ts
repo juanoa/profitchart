@@ -8,8 +8,8 @@ export function useAccountFirebaseAdapter() {
   const accountFirebaseDao = useAccountFirebaseDao();
   const accountFirebaseMapper = useAccountFirebaseMapper();
 
-  function findByUserIdOrderByDate(uid: string): Array<Account> {
-    const accountFirebaseDtos: Array<AccountFirebaseDto> = accountFirebaseDao.findByUserIdOrderByDate(uid);
+  async function findByUserIdOrderByDate(uid: string): Promise<Array<Account>> {
+    const accountFirebaseDtos: Array<AccountFirebaseDto> = await accountFirebaseDao.findByUserIdOrderByDate(uid);
     return accountFirebaseDtos.map(dto => accountFirebaseMapper.reverse(dto));
   }
 

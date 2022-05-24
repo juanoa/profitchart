@@ -1,4 +1,3 @@
-
 import {AccountUpdateFirebaseDto} from "./AccountUpdateFirebaseDto";
 
 export interface AccountFirebaseDto {
