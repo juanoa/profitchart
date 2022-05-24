@@ -15,11 +15,11 @@ export const routes: Array<{path: string; PageComponent: React.ComponentType}> =
     PageComponent: AccountsPage
   },
   {
-    path: "/account/create",
+    path: "/accounts/create",
     PageComponent: CreateAccountPage
   },
   {
-    path: "/account/:id",
+    path: "/accounts/:id",
     PageComponent: AccountPage
   },
   {
