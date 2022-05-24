@@ -10,4 +10,5 @@ export const types = {
     accountsLoad: '[Accounts] Load account',
     accountsAddNew: '[Accounts] Add new account',
     accountsUpdated: '[Accounts] Update account',
+    accountsDeleted: '[Accounts] Delete account',
 }

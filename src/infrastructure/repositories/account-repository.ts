@@ -1,7 +1,7 @@
 import {Account} from "../../domain/account/Account";
 import {useAccountFirebaseAdapter} from "../components/firebase/adapter/account-firebase-adapter";
 import {useDispatch} from "react-redux";
-import {addNewAccount, loadAccounts} from "../components/redux/actions/accounts";
+import {addNewAccount, deleteAccount, loadAccounts} from "../components/redux/actions/accounts";
 import {useAuthReduxAdapter} from "../components/redux/adapter/auth-redux-adapter";
 
 export function useAccountRepository() {
@@ -23,5 +23,11 @@ export function useAccountRepository() {
     return account;
   }
 
-  return {load, create};
+  function remove(id: string): void {
+    const uid: string = authReduxAdapter.getUserId();
+    accountFirebaseAdapter.remove(id, uid);
+    dispatch(deleteAccount(id));
+  }
+
+  return {load, create, remove};
 }

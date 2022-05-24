@@ -19,5 +19,9 @@ export function useAccountFirebaseAdapter() {
     return account;
   }
 
-  return {findByUserIdOrderByDate, create};
+  function remove(id: string, uid: string): void {
+    accountFirebaseDao.remove(id, uid).then();
+  }
+
+  return {findByUserIdOrderByDate, create, remove};
 }

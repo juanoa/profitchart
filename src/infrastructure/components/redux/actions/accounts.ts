@@ -17,3 +17,8 @@ export const setAccounts = (accounts: Array<object>) => ({
   type: types.accountsLoad,
   payload: accounts
 })
+
+export const deleteAccount = (id: string) => ({
+  type: types.accountsDeleted,
+  payload: id
+})

@@ -30,6 +30,11 @@ export function useAccountFirebaseDao() {
     return await db.doc(`${userId}/${collection}/${accountId}`).update(account)
   }
 
-  return {findByUserIdOrderByDate, create, update}
+  async function remove(id: string, userId: string) {
+    console.log(id)
+    return await db.collection(`${userId}/${collection}`).doc(id).delete()
+  }
+
+  return {findByUserIdOrderByDate, create, update, remove}
 
 }

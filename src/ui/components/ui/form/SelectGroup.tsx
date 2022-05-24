@@ -17,7 +17,7 @@ export const SelectGroup = ({label, name, onChange, options, value}: Props) => (
       onChange={onChange}
       className="input-select"
     >
-      {options.map(option => <option value={option.value} label={option.label}/>)}
+      {options.map(option => <option value={option.value} label={option.label} key={option.value}/>)}
     </select>
   </div>
 );
