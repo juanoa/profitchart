@@ -2,7 +2,7 @@ import {BidirectionalMapper} from "../../../utils/mappers";
 import {Account} from "../../../../domain/account/Account";
 import {AccountFirebaseDto} from "../dto/account/AccountFirebaseDto";
 import {useAccountUpdateFirebaseMapper} from "./AccountUpdateFirebaseMapper";
-import {AccountTypes} from "../../../../domain/account/AccountTypes";
+import {AccountType} from "../../../../domain/account/AccountType";
 
 export function useAccountFirebaseMapper(): BidirectionalMapper<Account, AccountFirebaseDto> {
 
@@ -32,7 +32,7 @@ export function useAccountFirebaseMapper(): BidirectionalMapper<Account, Account
       archived: dto.archived,
       updates: dto.updates.map(update => reverseAccountUpdate(update)),
       name: dto.name,
-      type: dto.type as AccountTypes
+      type: dto.type as AccountType
     }
   }
 

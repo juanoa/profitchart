@@ -3,9 +3,9 @@ import {NavLink, useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import PageLayout from "../../layout/PageLayout";
-import {accountColors, accountTypes} from "../../../config/data/account-config";
-import {currencies} from "../../../config/data/currency-config";
 import {useCreateAccount} from "../../../application/usecases/account/create-account";
+import {useAccountConfig} from "../../../infrastructure/components/config/account-config";
+import {useCurrencyConfig} from "../../../infrastructure/components/config/currency-config";
 
 interface CreateAccountForm {
   name: string,
@@ -18,6 +18,8 @@ interface CreateAccountForm {
 export const CreateAccountPage = () => {
 
   const createAccount = useCreateAccount();
+  const accountConfig = useAccountConfig();
+  const currencyConfig = useCurrencyConfig();
 
   const history = useHistory()
   // @ts-ignore
@@ -62,7 +64,10 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {accountTypes.map(type => <option value={type.id} key={type.id}>{type.name} {type.emoji}</option>)}
+              {
+                accountConfig.getAccountTypes()
+                    .map(type => <option value={type.id} key={type.id}>{type.name} {type.emoji}</option>)
+              }
             </select>
           </div>
         </div>
@@ -82,7 +87,10 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {accountColors.map(color => <option value={color.hex} key={color.hex}>{color.name}</option>)}
+              {
+                accountConfig.getAccountColors()
+                    .map(color => <option value={color.hex} key={color.hex}>{color.name}</option>)
+              }
             </select>
           </div>
           <div className="col-md-6">
@@ -93,7 +101,10 @@ export const CreateAccountPage = () => {
               onChange={handleInputChanges}
               className="input-select"
             >
-              {currencies.map(currency => <option value={currency.code} key={currency.code}>{currency.name}</option>)}
+              {
+                currencyConfig.getCurrencies()
+                    .map(currency => <option value={currency.code} key={currency.code}>{currency.name}</option>)
+              }
             </select>
           </div>
         </div>

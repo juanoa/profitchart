@@ -1,6 +1,6 @@
-import {Currency} from "../../domain/currency/Currency";
+import {CurrencyUiDto} from "../../infrastructure/components/ui/dto/CurrencyUiDto";
 
-export const currencies: Array<Currency> = [
+export const currencies: Array<CurrencyUiDto> = [
   {
     code: "EUR",
     name: "Euro",

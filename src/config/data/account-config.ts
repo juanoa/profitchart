@@ -1,7 +1,7 @@
-import {AccountType} from "../../domain/account/AccountType";
-import {AccountColor} from "../../domain/account/AccountColor";
+import {AccountTypeUiDto} from "../../infrastructure/components/ui/dto/AccountTypeUiDto";
+import {AccountColorUiDto} from "../../infrastructure/components/ui/dto/AccountColorUiDto";
 
-export const accountTypes: Array<AccountType> = [
+export const accountTypes: Array<AccountTypeUiDto> = [
   {
     id: "savings",
     name: "Savings",
@@ -22,7 +22,7 @@ export const accountTypes: Array<AccountType> = [
   },
 ];
 
-export const accountColors: Array<AccountColor> = [
+export const accountColors: Array<AccountColorUiDto> = [
   {
     hex: "#ff695d",
     name: "Red"

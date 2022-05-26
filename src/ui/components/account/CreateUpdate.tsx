@@ -2,14 +2,14 @@ import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import {months} from "../../../config/data/date-config";
-import {getCurrencyByCode} from "../../../infrastructure/components/config/currency-config-dao";
 import {FormGroup} from "../ui/form/FormGroup";
 import {SelectGroup} from "../ui/form/SelectGroup";
 import {monthsToSelectConverter} from "../../../helpers/mappers/components/date/months-select-mapper";
 import {Account} from "../../../domain/account/Account";
-import {Currency} from "../../../domain/currency/Currency";
 import {Optional} from "../../../domain/Optional";
 import {AccountUpdate} from "../../../domain/account/AccountUpdate";
+import {CurrencyUiDto} from "../../../infrastructure/components/ui/dto/CurrencyUiDto";
+import {useCurrencyConfig} from "../../../infrastructure/components/config/currency-config";
 
 interface Props {
   account: Account;
@@ -22,12 +22,11 @@ interface CreateUpdateForm {
 }
 
 export const CreateUpdate = ({account}: Props) => {
-
-  const dispatch = useDispatch()
   // @ts-ignore
   const {loading} = useSelector(state => state.ui)
+  const currencyConfig = useCurrencyConfig();
 
-  const currency: Optional<Currency> = getCurrencyByCode(account.currency);
+  const currency: Optional<CurrencyUiDto> = currencyConfig.getCurrencyByCode(account.currency);
 
   const today = new Date()
 

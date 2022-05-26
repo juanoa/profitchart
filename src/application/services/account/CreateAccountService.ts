@@ -1,6 +1,6 @@
 import {Account} from "../../../domain/account/Account";
 import {createId} from "../../../domain/Identifier";
-import {AccountTypes} from "../../../domain/account/AccountTypes";
+import {AccountType} from "../../../domain/account/AccountType";
 
 export function useCreateAccountService() {
   return function (name: string, description: string, color: string, currency: string, type: string): Account {
@@ -8,7 +8,7 @@ export function useCreateAccountService() {
       id: createId(),
       name,
       description,
-      type: type as AccountTypes,
+      type: type as AccountType,
       currency,
       color,
       date: new Date(),

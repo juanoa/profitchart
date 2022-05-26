@@ -1,12 +1,12 @@
 import React from 'react'
-import {getAccountTypeById} from "../../../infrastructure/components/config/account-config-dao";
-import {getCurrencyByCode} from "../../../infrastructure/components/config/currency-config-dao";
 import {Account} from "../../../domain/account/Account";
-import {AccountType} from "../../../domain/account/AccountType";
+import {AccountTypeUiDto} from "../../../infrastructure/components/ui/dto/AccountTypeUiDto";
 import {Optional} from "../../../domain/Optional";
 import {Currency} from "../../../domain/currency/Currency";
 import {useDeleteAccount} from "../../../application/usecases/account/delete-account";
 import {useHistory} from "react-router-dom";
+import {useAccountConfig} from "../../../infrastructure/components/config/account-config";
+import {useCurrencyConfig} from "../../../infrastructure/components/config/currency-config";
 
 interface Props {
   account: Account;
@@ -14,10 +14,13 @@ interface Props {
 
 export const InfoAccount = ({account}: Props) => {
 
-  const {id, date, archived, description} = account
-  const history = useHistory();
-
   const deleteAccount = useDeleteAccount();
+  const accountConfig = useAccountConfig();
+  const currencyConfig = useCurrencyConfig();
+
+  const {id, date, archived, description} = account
+
+  const history = useHistory();
 
   const archivedAccount = () => {
     account.archived = true
@@ -34,8 +37,8 @@ export const InfoAccount = ({account}: Props) => {
     history.push('/accounts')
   }
 
-  const accountType: Optional<AccountType> = getAccountTypeById(account.type);
-  const currency: Optional<Currency> = getCurrencyByCode(account.currency);
+  const accountType: Optional<AccountTypeUiDto> = accountConfig.getAccountTypeById(account.type);
+  const currency: Optional<Currency> = currencyConfig.getCurrencyByCode(account.currency);
 
   return (
     <div className="card mb-4">

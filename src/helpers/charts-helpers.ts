@@ -4,7 +4,7 @@ import {accountTypes} from "../config/data/account-config";
 import {Account} from "../domain/account/Account";
 import {Optional} from "../domain/Optional";
 import {AccountUpdate} from "../domain/account/AccountUpdate";
-import {AccountType} from "../domain/account/AccountType";
+import {AccountTypeUiDto} from "../infrastructure/components/ui/dto/AccountTypeUiDto";
 import {orderAccountUpdatesByDate} from "./date-helpers";
 
 export const getAccountsSum = (accounts: Array<Account>) => {
@@ -51,7 +51,7 @@ export const getAccountSum = (account: Account) => {
 export const getAccountSumWithLabels = (account: Account, labels: Array<string>) => {
   const values: Array<Optional<number>> = []
 
-  labels.forEach(l => values.push(undefined))
+  labels.forEach(() => values.push(undefined))
 
   account.updates.forEach(update => {
     const label = getMonthYearString(update);
@@ -91,7 +91,7 @@ export const getTypesAccountForDoughnutChart = (accounts: Array<Account>) => {
 
   const lastUpdate = getLastUpdate(accounts);
 
-  accountTypes.forEach((type: AccountType) => {
+  accountTypes.forEach((type: AccountTypeUiDto) => {
     labels.push(type.name);
     colors.push(type.color);
 

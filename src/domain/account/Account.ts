@@ -1,4 +1,4 @@
-import {AccountTypes} from "./AccountTypes";
+import {AccountType} from "./AccountType";
 import {AccountUpdate} from "./AccountUpdate";
 import {Identifier} from "../Identifier";
 
@@ -10,6 +10,6 @@ export interface Account {
   date: Date;
   description: string;
   name: string;
-  type: AccountTypes;
+  type: AccountType;
   updates: Array<AccountUpdate>
 }

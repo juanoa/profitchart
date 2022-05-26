@@ -1,6 +1,5 @@
-export interface AccountType {
-  id: string;
-  name: string;
-  emoji: string;
-  color: string;
+export enum AccountType {
+  SAVINGS = "savings",
+  INVESTMENT = "investment",
+  OTHER = "other",
 }
