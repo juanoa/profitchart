@@ -7,7 +7,6 @@ import {SelectGroup} from "../ui/form/SelectGroup";
 import {monthsToSelectConverter} from "../../../helpers/mappers/components/date/months-select-mapper";
 import {Account} from "../../../domain/account/Account";
 import {Optional} from "../../../domain/Optional";
-import {AccountUpdate} from "../../../domain/account/AccountUpdate";
 import {CurrencyUiDto} from "../../../infrastructure/components/ui/dto/CurrencyUiDto";
 import {useCurrencyConfig} from "../../../infrastructure/components/config/currency-config";
 import {useAddUpdate} from "../../../application/usecases/account/add-update";
@@ -32,7 +31,7 @@ export const CreateUpdate = ({account}: Props) => {
 
   const today = new Date()
 
-  const [formValues, handleInputChanges] = useForm<CreateUpdateForm>({
+  const [formValues, handleInputChanges, reset] = useForm<CreateUpdateForm>({
     year: today.getFullYear(),
     month: today.getMonth(),
     value: undefined
@@ -42,7 +41,8 @@ export const CreateUpdate = ({account}: Props) => {
   const handleForm = (e: any) => {
     e.preventDefault();
     const valueOrZero: number = value || 0;
-    addUpdate(account, year, month, valueOrZero);
+    addUpdate(account, year, month, Number(valueOrZero));
+    reset();
   }
 
   return (

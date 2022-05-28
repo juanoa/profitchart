@@ -1,7 +1,7 @@
 import {Account} from "../../domain/account/Account";
 import {useAccountFirebaseAdapter} from "../components/firebase/adapter/account-firebase-adapter";
 import {useDispatch} from "react-redux";
-import {addNewAccount, deleteAccount, loadAccounts} from "../components/redux/actions/accounts";
+import {addNewAccount, deleteAccount, loadAccounts, updateAccount} from "../components/redux/actions/accounts";
 import {useAuthReduxAdapter} from "../components/redux/adapter/auth-redux-adapter";
 
 export function useAccountRepository() {
@@ -26,7 +26,7 @@ export function useAccountRepository() {
   function update(account: Account): Account {
     const uid: string = authReduxAdapter.getUserId();
     accountFirebaseAdapter.update(account, uid)
-    // TODO Update from Redux
+    dispatch(updateAccount(account))
     return account;
   }
 

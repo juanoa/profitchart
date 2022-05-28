@@ -24,7 +24,7 @@ export const UpdateRow = ({update, currency}: Props) => {
 
   return (
     <tr>
-      <td>{`${getMonth(Number(month))} ${year}`}</td>
+      <td>{`${getMonth(month)} ${year}`}</td>
       {
         edit
           ?

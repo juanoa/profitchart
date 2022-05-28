@@ -24,7 +24,7 @@ export const accountsReducer = (state = initialState, action: any) => {
                 ...state,
                 accounts: state.accounts.map(
                     account => account.id === action.payload.id
-                        ? action.payload.account
+                        ? action.payload
                         : account
                 )
             }

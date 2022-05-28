@@ -8,7 +8,7 @@ export function useAddUpdate() {
     const accountUpdateAdder = useAccountUpdateAdder();
     const accountRepository = useAccountRepository()
 
-    return function (account: Account, month: number, year: number, value: number): Account {
+    return function (account: Account, year: number, month: number, value: number): Account {
         const update: AccountUpdate = {month, year, value}
         const accountWithNewUpdate = accountUpdateAdder(account, update);
         return accountRepository.update(accountWithNewUpdate)
