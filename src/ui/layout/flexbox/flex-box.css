@@ -1,0 +1,94 @@
+@import "amiga-sewing/foundations.css";
+
+.FlexBox {
+  display: flex;
+}
+
+.FlexBox___column {
+  flex-direction: column;
+}
+.FlexBox___row {
+  flex-direction: row;
+}
+.FlexBox___column-reverse {
+  flex-direction: column-reverse;
+}
+.FlexBox___row-reverse {
+  flex-direction: row-reverse;
+}
+
+.FlexBox___justify___start {
+  justify-content: flex-start;
+}
+.FlexBox___justify___center {
+  justify-content: center;
+}
+.FlexBox___justify___end {
+  justify-content: flex-end;
+}
+.FlexBox___justify___between {
+  justify-content: space-between;
+}
+.FlexBox___justify___around {
+  justify-content: space-around;
+}
+.FlexBox___justify___evenly {
+  justify-content: space-evenly;
+}
+
+.FlexBox___align___stretch {
+  align-items: stretch;
+}
+.FlexBox___align___center {
+  align-items: center;
+}
+.FlexBox___align___end {
+  align-items: flex-end;
+}
+
+.FlexBox___align___start {
+  align-items: flex-start;
+}
+.FlexBox___align___baseline {
+  align-items: baseline;
+}
+
+.FlexBox___gap___1 {
+  gap: var(--size1);
+}
+.FlexBox___gap___2 {
+  gap: var(--size2);
+}
+.FlexBox___gap___3 {
+  gap: var(--size3);
+}
+.FlexBox___gap___4 {
+  gap: var(--size4);
+}
+.FlexBox___gap___5 {
+  gap: var(--size5);
+}
+.FlexBox___gap___6 {
+  gap: var(--size6);
+}
+
+.FlexBox___grow___1 {
+  flex-grow: 1;
+}
+
+.FlexBox___flex___1 {
+  flex: 1;
+}
+.FlexBox___flex___2 {
+  flex: 2;
+}
+
+.FlexBox___wrap___wrap {
+  flex-wrap: wrap;
+}
+.FlexBox___wrap___nowrap {
+  flex-wrap: nowrap;
+}
+.FlexBox___wrap___wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
