@@ -23,7 +23,7 @@ export function useAccountFirebaseDao() {
   }
 
   async function create(account: AccountFirebaseDto, userId: string) {
-    return await db.collection(`${userId}/${collection}`).add(account)
+    return await db.collection(`${userId}/${collection}`).doc(account.id).set(account)
   }
 
   async function update(userId: string, accountId: string, account: any) {
