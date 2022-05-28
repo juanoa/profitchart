@@ -2,7 +2,7 @@ import {Account} from "../../../domain/account/Account";
 import {createId} from "../../../domain/Identifier";
 import {AccountType} from "../../../domain/account/AccountType";
 
-export function useCreateAccountService() {
+export function useAccountCreator() {
   return function (name: string, description: string, color: string, currency: string, type: string): Account {
     return {
       id: createId(),

@@ -26,8 +26,8 @@ export function useAccountFirebaseDao() {
     return await db.collection(`${userId}/${collection}`).doc(account.id).set(account)
   }
 
-  async function update(userId: string, accountId: string, account: any) {
-    return await db.doc(`${userId}/${collection}/${accountId}`).update(account)
+  async function update(account: AccountFirebaseDto, userId: string) {
+    return await db.doc(`${userId}/${collection}/${account.id}`).update(account)
   }
 
   async function remove(id: string, userId: string) {

@@ -23,11 +23,18 @@ export function useAccountRepository() {
     return account;
   }
 
+  function update(account: Account): Account {
+    const uid: string = authReduxAdapter.getUserId();
+    accountFirebaseAdapter.update(account, uid)
+    // TODO Update from Redux
+    return account;
+  }
+
   function remove(id: string): void {
     const uid: string = authReduxAdapter.getUserId();
     accountFirebaseAdapter.remove(id, uid);
     dispatch(deleteAccount(id));
   }
 
-  return {load, create, remove};
+  return {load, create, update, remove};
 }

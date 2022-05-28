@@ -19,9 +19,15 @@ export function useAccountFirebaseAdapter() {
     return account;
   }
 
+  function update(account: Account, uid: string): Account {
+    const accountFirebaseDto: AccountFirebaseDto = accountFirebaseMapper.convert(account);
+    accountFirebaseDao.update(accountFirebaseDto, uid).then();
+    return account;
+  }
+
   function remove(id: string, uid: string): void {
     accountFirebaseDao.remove(id, uid).then();
   }
 
-  return {findByUserIdOrderByDate, create, remove};
+  return {findByUserIdOrderByDate, create, update, remove};
 }

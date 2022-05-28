@@ -5,7 +5,6 @@ import {Account} from "../domain/account/Account";
 import {Optional} from "../domain/Optional";
 import {AccountUpdate} from "../domain/account/AccountUpdate";
 import {AccountTypeUiDto} from "../infrastructure/components/ui/dto/AccountTypeUiDto";
-import {orderAccountUpdatesByDate} from "./date-helpers";
 
 export const getAccountsSum = (accounts: Array<Account>) => {
   const labels: Array<string> = [];
@@ -119,8 +118,7 @@ const getLastUpdate = (accounts: Array<Account>) => {
     Array.prototype.push.apply(updates, account.updates)
   })
 
-  const updatesOrdered = orderAccountUpdatesByDate(updates)
-  return updatesOrdered[updatesOrdered.length - 1]
+  return updates[updates.length - 1]
 }
 
 const getMonthYearString = (update: AccountUpdate) => {

@@ -10,6 +10,7 @@ import {Optional} from "../../../domain/Optional";
 import {AccountUpdate} from "../../../domain/account/AccountUpdate";
 import {CurrencyUiDto} from "../../../infrastructure/components/ui/dto/CurrencyUiDto";
 import {useCurrencyConfig} from "../../../infrastructure/components/config/currency-config";
+import {useAddUpdate} from "../../../application/usecases/account/add-update";
 
 interface Props {
   account: Account;
@@ -25,6 +26,7 @@ export const CreateUpdate = ({account}: Props) => {
   // @ts-ignore
   const {loading} = useSelector(state => state.ui)
   const currencyConfig = useCurrencyConfig();
+  const addUpdate = useAddUpdate();
 
   const currency: Optional<CurrencyUiDto> = currencyConfig.getCurrencyByCode(account.currency);
 
@@ -39,12 +41,8 @@ export const CreateUpdate = ({account}: Props) => {
 
   const handleForm = (e: any) => {
     e.preventDefault();
-    const update: AccountUpdate = {
-      year,
-      month,
-      value: value || 0
-    };
-    // dispatch(startCreateUpdate(account, update));
+    const valueOrZero: number = value || 0;
+    addUpdate(account, year, month, valueOrZero);
   }
 
   return (
