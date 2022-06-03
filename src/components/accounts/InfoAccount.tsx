@@ -1,12 +1,12 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
 import {startUpdateAccount} from "../../actions/accounts";
-import {getAccountTypeById} from "../../repository/config/account-config-repository";
-import {getCurrencyByCode} from "../../repository/config/currency-config-repository";
-import {Account} from "../../domain/account/Account";
-import {AccountType} from "../../domain/account/AccountType";
-import {Optional} from "../../domain/Optional";
-import {Currency} from "../../domain/currency/Currency";
+import {Account} from "../../interfaces/account/Account";
+import {AccountType} from "../../interfaces/account/AccountType";
+import {Optional} from "../../interfaces/Optional";
+import {Currency} from "../../interfaces/currency/Currency";
+import {useCurrencyConfigRepository} from "../../hooks/useCurrencyConfigRepository";
+import {useAccountConfigRepository} from "../../hooks/useAccountConfigRepository";
 
 interface Props {
   account: Account;
@@ -17,6 +17,8 @@ export const InfoAccount = ({account}: Props) => {
   const {date, archived, description} = account
 
   const dispatch = useDispatch()
+  const currencyConfigRepository = useCurrencyConfigRepository()
+  const accountConfigRepository = useAccountConfigRepository()
 
   const archivedAccount = () => {
     account.archived = true
@@ -28,8 +30,8 @@ export const InfoAccount = ({account}: Props) => {
     dispatch(startUpdateAccount(account))
   }
 
-  const accountType: Optional<AccountType> = getAccountTypeById(account.type);
-  const currency: Optional<Currency> = getCurrencyByCode(account.currency);
+  const accountType: Optional<AccountType> = accountConfigRepository.getAccountTypeById(account.type)
+  const currency: Optional<Currency> = currencyConfigRepository.getCurrencyByCode(account.currency);
 
   return (
     <div className="card mb-4">

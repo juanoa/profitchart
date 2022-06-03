@@ -1,8 +1,7 @@
 import {finishLoading, setToast, startLoading} from "./ui";
 import {types} from "../reducers/types";
 import {create, getAllOrderByDate, update} from "../repository/firebase/accounts-firebase-repository";
-import {AccountUpdate} from "../domain/account/AccountUpdate";
-import {accountUpdateFirebaseMapperToDto} from "../helpers/mappers/firebase/account/account-update-firebase-mapper";
+import {AccountUpdate} from "../interfaces/account/AccountUpdate";
 import {orderAccountUpdatesByDate} from "../helpers/date-helpers";
 
 export const startCreateAccount = (name: string, type: string, description: string, color: string, currency: string) => {
@@ -39,8 +38,6 @@ export const startCreateUpdate = (account: any, newUpdate: AccountUpdate) => {
   return async (dispatch: any, getState: any) => {
     dispatch(startLoading())
     const {uid} = getState().auth
-
-    const accountUpdatedFirebaseDto = accountUpdateFirebaseMapperToDto(newUpdate);
 
     // @ts-ignore
     account.updates.push(newUpdate)

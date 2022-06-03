@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import PageLayout from "../../layout/PageLayout";
 import AccountCard from "../../components/accounts/AccountCard";
-import { Account } from '../../domain/account/Account';
+import { Account } from '../../interfaces/account/Account';
 
 export const AccountsPage = () => {
 

@@ -1,10 +1,10 @@
 import {getSortMonth} from "./get-month";
 import {getTwoDecimals} from "./float-helpers";
 import {accountTypes} from "../config/data/account-config";
-import {Account} from "../domain/account/Account";
-import {Optional} from "../domain/Optional";
-import {AccountUpdate} from "../domain/account/AccountUpdate";
-import {AccountType} from "../domain/account/AccountType";
+import {Account} from "../interfaces/account/Account";
+import {Optional} from "../interfaces/Optional";
+import {AccountUpdate} from "../interfaces/account/AccountUpdate";
+import {AccountType} from "../interfaces/account/AccountType";
 import {orderAccountUpdatesByDate} from "./date-helpers";
 
 export const getAccountsSum = (accounts: Array<Account>) => {

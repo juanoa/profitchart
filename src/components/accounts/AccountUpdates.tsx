@@ -1,6 +1,6 @@
 import React from 'react'
 import {UpdateRow} from "./UpdateRow";
-import {Account} from "../../domain/account/Account";
+import {Account} from "../../interfaces/account/Account";
 
 interface Props {
   account: Account;

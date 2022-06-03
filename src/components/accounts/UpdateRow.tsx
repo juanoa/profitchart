@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {getMonth} from "../../helpers/get-month";
-import {AccountUpdate} from "../../domain/account/AccountUpdate";
-import {Currency} from "../../domain/currency/Currency";
+import {AccountUpdate} from "../../interfaces/account/AccountUpdate";
+import {Currency} from "../../interfaces/currency/Currency";
 
 interface Props {
   update: AccountUpdate;

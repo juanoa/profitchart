@@ -1,4 +1,4 @@
-import {AccountUpdate} from "../domain/account/AccountUpdate";
+import {AccountUpdate} from "../interfaces/account/AccountUpdate";
 
 export const orderAccountUpdatesByDate: (updates: Array<AccountUpdate>) => Array<AccountUpdate> = (updates) => {
   updates.sort( (a, b) =>  {
