@@ -2,11 +2,13 @@ import React from 'react'
 import {Doughnut} from "react-chartjs-2";
 import {getTypesAccountForDoughnutChart} from "../../helpers/charts-helpers";
 import {useSelector} from "react-redux";
+import {Account} from "../../../domain/entities/account/Account";
 
-export const TypesAccountDoughnutChart = () => {
+interface Props {
+  accounts: Array<Account>;
+}
 
-  // @ts-ignore
-  const {accounts} = useSelector(state => state.accounts)
+export const TypesAccountDoughnutChart = ({accounts}: Props) => {
 
   const dataChart = getTypesAccountForDoughnutChart(accounts)
 

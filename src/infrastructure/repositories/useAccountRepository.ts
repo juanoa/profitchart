@@ -11,8 +11,8 @@ export const useAccountRepository = (): AccountRepository => {
   const {map: mapAccountFromFirebase} = useAccountFirebaseMapper();
 
   return {
-    findByUser: (uid: string): Array<Account> => {
-      const accountsDto: Array<AccountFirebaseDto> = findByUserInFirebase(uid);
+    findByUser: async (uid: string): Promise<Array<Account>> => {
+      const accountsDto: Array<AccountFirebaseDto> = await findByUserInFirebase(uid);
       return accountsDto.map(accountDto => mapAccountFromFirebase(accountDto));
     },
 

@@ -2,11 +2,13 @@ import React from 'react'
 import {Bar} from "react-chartjs-2";
 import {useSelector} from "react-redux";
 import {getAccountsSum, getAccountSumWithLabels} from "../../helpers/charts-helpers";
+import {Account} from "../../../domain/entities/account/Account";
 
-export const MainChart = () => {
+interface Props {
+  accounts: Array<Account>;
+}
 
-  // @ts-ignore
-  const {accounts} = useSelector(state => state.accounts)
+export const MainChart = ({accounts}: Props) => {
 
   const {labels, values} = getAccountsSum(accounts)
 

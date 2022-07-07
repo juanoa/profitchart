@@ -1,75 +1,49 @@
-import React, {useEffect, useState} from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import React from 'react';
+import {BrowserRouter as Router, Switch,} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import {LoginPage} from "../pages/auth/LoginPage";
 import {DashboardRouter} from "./DashboardRouter";
 import {Toast} from "../layout/Toast";
-import {auth} from "../../config/firebase-config";
-import {login} from "../actions/auth";
 import {Loading} from "../layout/Loading";
 import {PrivateRoute} from "./PrivateRoute";
 import {PublicRoute} from "./PublicRoute";
-import {startLoadingAccounts} from "../actions/accounts";
-import {useAppDispatch} from "../store/store";
-import {useGetAccountsByUser} from "../../application/accounts/useGetAccountsByUser";
+import {useAuthenticationProvider} from "../contexts/AuthenticationContext";
 
 export const AppRouter = () => {
 
-    const dispatch = useAppDispatch();
+  // @ts-ignore
+  const {msgToast, typeToast} = useSelector(state => state.ui)
 
-    const [checking, setChecking] = useState(true);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {isLoading, isLoggedIn} = useAuthenticationProvider();
 
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user?.uid){
-                dispatch(login(user.uid, user.email))
-                setIsLoggedIn(true)
-
-                // @ts-ignore
-                dispatch(startLoadingAccounts(user.uid)).then(() => setChecking(false))
-            } else {
-                setIsLoggedIn(false)
-                setChecking(false)
-            }
-        })
-    }, [dispatch, setChecking, setIsLoggedIn]);
-
-
-    // @ts-ignore
-    const {msgToast, typeToast} = useSelector(state => state.ui)
-
-    if (checking){
-        return (
-            <Loading />
-        )
-    }
-
+  if (isLoading) {
     return (
-        <Router>
-            <div>
-                {
-                    msgToast &&
-                    <Toast type={typeToast} msg={msgToast} />
-                }
-                <Switch>
-                    <PublicRoute
-                        exact
-                        path='/login'
-                        component={LoginPage}
-                        isAuthenticated={isLoggedIn}
-                    />
-                    <PrivateRoute
-                        path='/'
-                        component={DashboardRouter}
-                        isAuthenticated={isLoggedIn}
-                    />
-                </Switch>
-            </div>
-        </Router>
-    );
+      <Loading/>
+    )
+  }
+
+  return (
+    <Router>
+      <div>
+        {
+          msgToast &&
+          <Toast type={typeToast} msg={msgToast}/>
+        }
+        <Switch>
+          <PublicRoute
+            exact
+            path='/login'
+            component={LoginPage}
+            isAuthenticated={isLoggedIn}
+          />
+          <PrivateRoute
+            path='/'
+            component={DashboardRouter}
+            isAuthenticated={isLoggedIn}
+          />
+        </Switch>
+      </div>
+    </Router>
+  );
 };
