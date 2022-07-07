@@ -1,4 +1,4 @@
-import {Currency} from "../../interfaces/currency/Currency";
+import {Currency} from "../../domain/entities/currency/Currency";
 
 export const currencies: Array<Currency> = [
   {

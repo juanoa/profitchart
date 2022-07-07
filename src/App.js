@@ -1,10 +1,10 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 
-import {AppRouter} from "./router/AppRouter";
-import {store} from "./store/store";
+import {AppRouter} from "./ui/router/AppRouter";
+import {store} from "./ui/store/store";
 
-import './styles/styles.scss'
+import './ui/styles/styles.scss'
 
 export const App = () => {
     return (

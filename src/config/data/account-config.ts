@@ -1,5 +1,5 @@
-import {AccountType} from "../../interfaces/account/AccountType";
-import {AccountColor} from "../../interfaces/account/AccountColor";
+import {AccountType} from "../../domain/entities/account/AccountType";
+import {AccountColor} from "../../domain/entities/account/AccountColor";
 
 export const accountTypes: Array<AccountType> = [
   {

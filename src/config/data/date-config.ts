@@ -1,4 +1,4 @@
-import {Month} from "../../interfaces/date/Month";
+import {Month} from "../../domain/entities/date/Month";
 
 export const months: Array<Month> = [
   {
