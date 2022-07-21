@@ -6,10 +6,11 @@ import PageLayout from "../../layout/PageLayout";
 import {Account} from "../../../domain/entities/account/Account";
 import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
 import {useGetAccountsByUser} from "../../../application/accounts/useGetAccountsByUser";
+import {Loading} from "../../layout/Loading";
 
 export const HomePage = () => {
 
-  const [accounts, setAccounts] = useState<Array<Account>>([]);
+  const [accounts, setAccounts] = useState<Array<Account>>();
 
   const {uid} = useAuthenticationContext()
 
@@ -19,6 +20,10 @@ export const HomePage = () => {
     getAccounts(uid)
       .then(accountsFetched => setAccounts(accountsFetched))
   }, []);
+
+  if (!accounts) {
+    return <Loading/>
+  }
 
   return (
     <PageLayout title="Dashboard" emoji="🏠">
