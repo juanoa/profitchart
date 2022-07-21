@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
-
-import {removeToast} from "../actions/ui";
 
 interface Props {
   msg: string;
@@ -11,7 +8,6 @@ interface Props {
 export const Toast = ({msg, type}: Props) => {
 
   const typeText = type.charAt(0).toUpperCase() + type.slice(1)
-  const dispatch = useDispatch()
 
   const [state, setState] = useState({className: "", emoji: ""});
 
@@ -37,7 +33,7 @@ export const Toast = ({msg, type}: Props) => {
 
 
   const closeHandle = () => {
-    dispatch(removeToast())
+    // TODO: handle close toast
   }
 
 

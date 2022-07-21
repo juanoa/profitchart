@@ -1,5 +1,4 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
 import {Account} from "../../../domain/entities/account/Account";
 import {AccountType} from "../../../domain/entities/account/AccountType";
 import {Optional} from "../../../domain/entities/Optional";
@@ -15,7 +14,6 @@ export const InfoAccount = ({account}: Props) => {
 
   const {date, archived, description} = account
 
-  const dispatch = useDispatch()
   const currencyConfigRepository = useCurrencyConfigRepository()
   const accountConfigRepository = useAccountConfigRepository()
 

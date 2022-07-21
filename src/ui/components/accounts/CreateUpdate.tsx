@@ -1,5 +1,4 @@
 import React from 'react'
-import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import {months} from "../../../config/data/date-config";
 import {FormGroup} from "../ui/form/FormGroup";
@@ -22,9 +21,6 @@ interface CreateUpdateForm {
 
 export const CreateUpdate = ({account}: Props) => {
 
-  const dispatch = useDispatch()
-  // @ts-ignore
-  const {loading} = useSelector(state => state.ui)
   const currencyConfigRepository = useCurrencyConfigRepository()
 
   const currency: Optional<Currency> = currencyConfigRepository.getCurrencyByCode(account.currency);
@@ -84,7 +80,7 @@ export const CreateUpdate = ({account}: Props) => {
           <button
             type="submit"
             className="btn btn-success btn-lg mt-3"
-            disabled={loading || !value || !isFormValid()}
+            disabled={!value || !isFormValid()}
           >
             Save
           </button>

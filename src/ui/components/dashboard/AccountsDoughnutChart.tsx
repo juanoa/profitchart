@@ -1,9 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Doughnut} from "react-chartjs-2";
 import {getAccountsForDoughnutChart} from "../../helpers/charts-helpers";
-import {useSelector} from "react-redux";
-import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
-import {useGetAccountsByUser} from "../../../application/accounts/useGetAccountsByUser";
 import {Account} from "../../../domain/entities/account/Account";
 
 interface Props {

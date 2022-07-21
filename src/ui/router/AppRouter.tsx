@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch,} from "react-router-dom";
-import {useSelector} from "react-redux";
 
 import {LoginPage} from "../pages/authentication/LoginPage";
 import {DashboardRouter} from "./DashboardRouter";
@@ -11,9 +10,6 @@ import {PublicRoute} from "./PublicRoute";
 import {useAuthenticationContext} from "../contexts/AuthenticationContext";
 
 export const AppRouter = () => {
-
-  // @ts-ignore
-  const {msgToast, typeToast} = useSelector(state => state.ui)
 
   const {isLoading, isLoggedIn} = useAuthenticationContext();
 
@@ -26,10 +22,6 @@ export const AppRouter = () => {
   return (
     <Router>
       <div>
-        {
-          msgToast &&
-          <Toast type={typeToast} msg={msgToast}/>
-        }
         <Switch>
           <PublicRoute
             exact

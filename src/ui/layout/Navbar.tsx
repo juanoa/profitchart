@@ -1,21 +1,20 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-
+import {useLogout} from "../../application";
+import {useAuthenticationContext} from "../contexts/AuthenticationContext";
 // @ts-ignore
 import logo from "../../logo.png";
-import {startLogout} from "../actions/auth";
 
 const packageJson = require('../../../package.json')
 
 export const Navbar = () => {
 
-  const dispatch = useDispatch()
-  // @ts-ignore
-  const {email} = useSelector(state => state.auth)
+  const logout = useLogout();
+
+  const {email} = useAuthenticationContext();
 
   const handleLogout = () => {
-    dispatch(startLogout())
+    logout().then();
   }
 
   return (

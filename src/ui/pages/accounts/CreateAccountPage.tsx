@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavLink, useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
 import PageLayout from "../../layout/PageLayout";
 import {accountColors, accountTypes} from "../../../config/data/account-config";
@@ -16,10 +15,7 @@ interface CreateAccountForm {
 
 export const CreateAccountPage = () => {
 
-  const dispatch = useDispatch()
   const history = useHistory()
-  // @ts-ignore
-  const {loading} = useSelector(state => state.ui)
 
   const [formValues, handleInputChanges] = useForm<CreateAccountForm>({
     name: '',
@@ -107,7 +103,6 @@ export const CreateAccountPage = () => {
         <button
           type="submit"
           className="btn btn-success btn-lg ml-2"
-          disabled={loading}
         >
           Save
         </button>
