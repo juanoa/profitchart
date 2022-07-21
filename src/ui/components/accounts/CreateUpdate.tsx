@@ -37,14 +37,21 @@ export const CreateUpdate = ({account}: Props) => {
   })
   const {year, month, value} = formValues
 
+  const isFormValid = () => {
+    return Number(value)
+  }
+
   const handleForm = (e: any) => {
     e.preventDefault();
-    const update: AccountUpdate = {
-      year,
-      month,
-      value: value || 0
-    };
-    // TODO: Create update
+    if (isFormValid()) {
+      const update: AccountUpdate = {
+        year,
+        month,
+        value: Number(value || 0)
+      };
+      console.log(update)
+      // TODO: Create update
+    }
   }
 
   return (
@@ -57,6 +64,7 @@ export const CreateUpdate = ({account}: Props) => {
             name="year"
             onChange={handleInputChanges}
             value={year}
+            required
           />
           <SelectGroup
             label="Month"
@@ -70,13 +78,13 @@ export const CreateUpdate = ({account}: Props) => {
             name="value"
             placeholder={currency?.symbol}
             onChange={handleInputChanges}
-            type="number"
             value={value}
+            required
           />
           <button
             type="submit"
             className="btn btn-success btn-lg mt-3"
-            disabled={loading || !value}
+            disabled={loading || !value || !isFormValid()}
           >
             Save
           </button>
