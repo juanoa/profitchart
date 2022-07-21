@@ -5,25 +5,33 @@ import {CreateAccountPage} from "../pages/accounts/CreateAccountPage";
 import {AccountPage} from "../pages/accounts/AccountPage";
 import {ConfigurationPage} from "../pages/configuration/ConfigurationPage";
 
-export const routes: Array<{path: string; PageComponent: React.ComponentType}> = [
+export const routePaths: any = {
+  HOME_PAGE: "/",
+  ACCOUNTS_LIST_PAGE: "/accounts",
+  CREATE_ACCOUNT_PAGE: "/accounts/create",
+  ACCOUNT_PAGE: "/accounts/:id",
+  CONFIGURATION_PAGE: "/configuration",
+}
+
+export const routes: Array<{ path: string; PageComponent: React.ComponentType }> = [
   {
-    path: "/",
+    path: routePaths.HOME_PAGE,
     PageComponent: HomePage
   },
   {
-    path: "/accounts",
+    path: routePaths.ACCOUNTS_LIST_PAGE,
     PageComponent: AccountListPage
   },
   {
-    path: "/accounts/create",
+    path: routePaths.CREATE_ACCOUNT_PAGE,
     PageComponent: CreateAccountPage
   },
   {
-    path: "/accounts/:id",
+    path: routePaths.ACCOUNT_PAGE,
     PageComponent: AccountPage
   },
   {
-    path: "/configuration",
+    path: routePaths.CONFIGURATION_PAGE,
     PageComponent: ConfigurationPage
   },
 ]
