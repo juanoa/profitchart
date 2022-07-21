@@ -1,6 +1,6 @@
 import React from "react";
 import {HomePage} from "../pages/dashboard/HomePage";
-import {AccountsPage} from "../pages/accounts/AccountsPage";
+import {AccountListPage} from "../pages/accounts/AccountListPage";
 import {CreateAccountPage} from "../pages/accounts/CreateAccountPage";
 import {AccountPage} from "../pages/accounts/AccountPage";
 import {ConfigurationPage} from "../pages/configuration/ConfigurationPage";
@@ -12,7 +12,7 @@ export const routes: Array<{path: string; PageComponent: React.ComponentType}> =
   },
   {
     path: "/accounts",
-    PageComponent: AccountsPage
+    PageComponent: AccountListPage
   },
   {
     path: "/accounts/create",

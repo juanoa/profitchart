@@ -3,10 +3,11 @@ import {useAccountFirebaseDao} from "../components/firebase/dao/useAccountFireba
 import {AccountFirebaseDto} from "../components/firebase/dto/AccountFirebaseDto";
 import {useAccountFirebaseMapper} from "../components/firebase/mappers/useAccountFirebaseMapper";
 import {Account} from "../../domain/entities/account/Account";
+import {Optional} from "../../domain/entities/Optional";
 
 export const useAccountRepository = (): AccountRepository => {
 
-  const {findByUser: findByUserInFirebase} = useAccountFirebaseDao();
+  const {findByUser: findByUserInFirebase, findByUserAndById: findByUserAndByIdInFirebase} = useAccountFirebaseDao();
 
   const {map: mapAccountFromFirebase} = useAccountFirebaseMapper();
 
@@ -16,6 +17,9 @@ export const useAccountRepository = (): AccountRepository => {
       return accountsDto.map(accountDto => mapAccountFromFirebase(accountDto));
     },
 
-    findByUserAndById: (uid: string, id: string) => undefined,
+    findByIdAndByUserId: async (id: string, uid: string): Promise<Optional<Account>> => {
+      const accountDto: AccountFirebaseDto = await findByUserAndByIdInFirebase(id, uid);
+      return mapAccountFromFirebase(accountDto);
+    }
   }
 }

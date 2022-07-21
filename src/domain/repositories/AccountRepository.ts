@@ -4,5 +4,5 @@ import {Optional} from "../entities/Optional";
 export interface AccountRepository {
   findByUser: (uid: string) => Promise<Array<Account>>,
 
-  findByUserAndById: (uid: string, id: string) => Optional<Account>,
+  findByIdAndByUserId: (id: string, uid: string) => Promise<Optional<Account>>,
 }

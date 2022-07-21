@@ -19,6 +19,17 @@ export const useAccountFirebaseDao = () => {
         })
       })
       return accounts
+    },
+
+    findByUserAndById: async (id: string, uid: string): Promise<AccountFirebaseDto> => {
+      const accountSnap = await db.collection(`${uid}/${collection}`)
+        .doc(id)
+        .get()
+      let account: any = {
+        id: accountSnap.id,
+        ...accountSnap.data()
+      }
+      return account;
     }
   }
 }
