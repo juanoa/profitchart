@@ -15,6 +15,7 @@ export const DashboardRouter = () => {
               routes.map(({path, PageComponent}) => (
                 <Route
                   exact
+                  key={path}
                   path={path}
                   component={PageComponent}
                 />

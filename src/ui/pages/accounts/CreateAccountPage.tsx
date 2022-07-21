@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
-import {startCreateAccount} from "../../actions/accounts";
 import PageLayout from "../../layout/PageLayout";
 import {accountColors, accountTypes} from "../../../config/data/account-config";
 import {currencies} from "../../../config/data/currency-config";
@@ -34,7 +33,7 @@ export const CreateAccountPage = () => {
 
   const handleForm = (e: any) => {
     e.preventDefault()
-    dispatch(startCreateAccount(name, type, description, color, currency))
+    // TODO: Create account
     history.push('/accounts')
   }
 

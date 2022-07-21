@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Switch,} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-import {LoginPage} from "../pages/auth/LoginPage";
+import {LoginPage} from "../pages/authentication/LoginPage";
 import {DashboardRouter} from "./DashboardRouter";
 import {Toast} from "../layout/Toast";
 import {Loading} from "../layout/Loading";

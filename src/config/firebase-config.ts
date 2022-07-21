@@ -1,6 +1,6 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -10,17 +10,16 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig)
 
-const db = firebase.firestore()
-const auth = firebase.auth()
+const app = initializeApp(firebaseConfig)
+
+const db = getFirestore(app)
+const auth = getAuth(app)
 
 const firstLevelCollection = "profitchart";
 
 export {
   db,
   auth,
-  firebase,
   firstLevelCollection
 }

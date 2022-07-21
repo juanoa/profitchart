@@ -1,7 +1,6 @@
 import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "../../hooks/useForm";
-import {startCreateUpdate} from "../../actions/accounts";
 import {months} from "../../../config/data/date-config";
 import {FormGroup} from "../ui/form/FormGroup";
 import {SelectGroup} from "../ui/form/SelectGroup";
@@ -45,7 +44,7 @@ export const CreateUpdate = ({account}: Props) => {
       month,
       value: value || 0
     };
-    dispatch(startCreateUpdate(account, update));
+    // TODO: Create update
   }
 
   return (

@@ -1,6 +1,5 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
-import {startUpdateAccount} from "../../actions/accounts";
 import {Account} from "../../../domain/entities/account/Account";
 import {AccountType} from "../../../domain/entities/account/AccountType";
 import {Optional} from "../../../domain/entities/Optional";
@@ -22,12 +21,12 @@ export const InfoAccount = ({account}: Props) => {
 
   const archivedAccount = () => {
     account.archived = true
-    dispatch(startUpdateAccount(account))
+    //TODO: Update account
   }
 
   const activatedAccount = () => {
     account.archived = false
-    dispatch(startUpdateAccount(account))
+    //TODO: Update account
   }
 
   const accountType: Optional<AccountType> = accountConfigRepository.getAccountTypeById(account.type)

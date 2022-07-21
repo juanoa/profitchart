@@ -1,9 +1,7 @@
 import React from 'react'
-import {useDispatch, useSelector} from "react-redux";
 
 import {useForm} from "../../hooks/useForm";
-import {startLoginEmailPassword} from "../../actions/auth";
-import {removeToast, setToast} from "../../actions/ui";
+import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
 
 interface LoginForm {
   email: string;
@@ -12,9 +10,7 @@ interface LoginForm {
 
 export const LoginPage = () => {
 
-  const dispatch = useDispatch()
-  // @ts-ignore
-  const {loading} = useSelector(state => state.ui)
+  const {onLogin} = useAuthenticationContext();
 
   const [values, handleInputChange] = useForm<LoginForm>({
     email: '',
@@ -23,20 +19,15 @@ export const LoginPage = () => {
 
   const {email, password} = values
 
+  const isFormValid = () => {
+    return password.length >= 5;
+  }
+
   const handleLogin = (e: any) => {
     e.preventDefault()
     if (isFormValid()) {
-      dispatch(startLoginEmailPassword(email, password))
+      onLogin(email, password);
     }
-  }
-
-  const isFormValid = () => {
-    if (password.length < 5) {
-      // dispatch(setToast('The password is too short', 'error'))
-      return false;
-    }
-    dispatch(removeToast())
-    return true;
   }
 
   return (
@@ -66,6 +57,7 @@ export const LoginPage = () => {
               type="password"
               name="password"
               value={password}
+              placeholder="***"
               onChange={handleInputChange}
             />
           </div>
@@ -73,7 +65,6 @@ export const LoginPage = () => {
           <button
             className="btn btn-primary btn-lg auth__button"
             type="submit"
-            disabled={loading}
           >
             Login
           </button>
