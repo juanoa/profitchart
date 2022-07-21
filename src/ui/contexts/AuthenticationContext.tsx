@@ -15,7 +15,7 @@ const AuthenticationContext = React.createContext<Context>({
   email: null
 })
 
-export const useAuthenticationProvider = () => useContext(AuthenticationContext);
+export const useAuthenticationContext = () => useContext(AuthenticationContext);
 
 interface Props {
   children: React.ReactNode,
@@ -39,7 +39,7 @@ const AuthenticationProvider = ({children}: Props) => {
         setIsLoggedIn(false)
       }
     })
-  }, [setChecking, setIsLoggedIn, setUid, setEmail]);
+  }, []);
 
   return (
     <AuthenticationContext.Provider

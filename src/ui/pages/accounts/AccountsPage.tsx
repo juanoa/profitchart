@@ -5,13 +5,13 @@ import PageLayout from "../../layout/PageLayout";
 import AccountCard from "../../components/accounts/AccountCard";
 import { Account } from '../../../domain/entities/account/Account';
 import {useGetAccountsByUser} from "../../../application/accounts/useGetAccountsByUser";
-import {useAuthenticationProvider} from "../../contexts/AuthenticationContext";
+import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
 
 export const AccountsPage = () => {
 
   const [accounts, setAccounts] = useState<Array<Account>>([]);
 
-  const {uid} = useAuthenticationProvider();
+  const {uid} = useAuthenticationContext();
 
   const getAccounts = useGetAccountsByUser();
 

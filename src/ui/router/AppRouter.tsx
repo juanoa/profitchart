@@ -8,14 +8,14 @@ import {Toast} from "../layout/Toast";
 import {Loading} from "../layout/Loading";
 import {PrivateRoute} from "./PrivateRoute";
 import {PublicRoute} from "./PublicRoute";
-import {useAuthenticationProvider} from "../contexts/AuthenticationContext";
+import {useAuthenticationContext} from "../contexts/AuthenticationContext";
 
 export const AppRouter = () => {
 
   // @ts-ignore
   const {msgToast, typeToast} = useSelector(state => state.ui)
 
-  const {isLoading, isLoggedIn} = useAuthenticationProvider();
+  const {isLoading, isLoggedIn} = useAuthenticationContext();
 
   if (isLoading) {
     return (
