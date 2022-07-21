@@ -22,9 +22,9 @@ export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebase
 
   const mapAccountUpdate = (update: AccountUpdateFirebaseDto): AccountUpdate => {
     return {
-      month: update.month,
-      year: update.year,
-      value: update.value,
+      month: Number(update.month),
+      year: Number(update.year),
+      value: Number(update.value),
     }
   }
 
