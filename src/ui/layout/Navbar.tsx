@@ -4,6 +4,7 @@ import {useLogout} from "../../application";
 import {useAuthenticationContext} from "../contexts/AuthenticationContext";
 // @ts-ignore
 import logo from "../../logo.png";
+import {routePaths} from "../router/routes";
 
 const packageJson = require('../../../package.json')
 
@@ -20,7 +21,7 @@ export const Navbar = () => {
   return (
     <div className="navbar__sidebar">
       <div className="navbar__logo">
-        <Link to="/" aria-label="Home page">
+        <Link to={routePaths.HOME_PAGE} aria-label="Home page">
           <img src={logo} alt={logo}/>
         </Link>
       </div>
