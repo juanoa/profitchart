@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import PageLayout from "../../layout/PageLayout";
 import AccountCard from "../../components/accounts/AccountCard";
 import {Account} from '../../../domain/entities/account/Account';
-import {useGetAccountsByUser} from "../../../application/accounts/useGetAccountsByUser";
+import {useGetAccountsByUser} from "../../../application";
 import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
 import {Loading} from "../../layout/Loading";
 import {routePaths} from "../../router/routes";
@@ -12,12 +12,12 @@ export const AccountListPage = () => {
 
   const [accounts, setAccounts] = useState<Array<Account>>();
 
-  const {uid} = useAuthenticationContext();
+  const {user} = useAuthenticationContext();
 
   const getAccounts = useGetAccountsByUser();
 
   useEffect(() => {
-    getAccounts(uid)
+    getAccounts(user?.uid)
       .then(accounts => setAccounts(accounts));
   }, []);
 

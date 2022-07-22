@@ -1,6 +1,6 @@
 import {collection, doc, getDoc, getDocs, orderBy, query} from 'firebase/firestore/lite';
 import {db, firstLevelCollection} from "../../../../config/firebase-config";
-import {AccountFirebaseDto} from "../dto/AccountFirebaseDto";
+import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 
 export const useAccountFirebaseDao = () => {
 

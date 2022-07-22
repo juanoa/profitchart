@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   const logout = useLogout();
 
-  const {email} = useAuthenticationContext();
+  const {user} = useAuthenticationContext();
 
   const handleLogout = () => {
     logout().then();
@@ -25,7 +25,7 @@ export const Navbar = () => {
         </Link>
       </div>
       <div className="navbar__email">
-        {email}
+        {user?.email}
       </div>
       <NavLink
         activeClassName="active"

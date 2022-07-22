@@ -1,7 +1,7 @@
 import {AccountRepository} from "../../domain/repositories/AccountRepository";
-import {useAccountFirebaseDao} from "../components/firebase/dao/useAccountFirebaseDao";
-import {AccountFirebaseDto} from "../components/firebase/dto/AccountFirebaseDto";
-import {useAccountFirebaseMapper} from "../components/firebase/mappers/useAccountFirebaseMapper";
+import {useAccountFirebaseDao} from "../components/firebase-firestore/adapters/useAccountFirebaseDao";
+import {AccountFirebaseDto} from "../components/firebase-firestore/dtos/AccountFirebaseDto";
+import {useAccountFirebaseMapper} from "../components/firebase-firestore/mappers/useAccountFirebaseMapper";
 import {Account} from "../../domain/entities/account/Account";
 import {Optional} from "../../domain/entities/Optional";
 

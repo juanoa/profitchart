@@ -1,8 +1,8 @@
-import {AccountTypesFirebaseDto} from "../dto/AccountTypesFirebaseDto";
+import {AccountTypesFirebaseDto} from "../dtos/AccountTypesFirebaseDto";
 import {AccountTypes} from "../../../../domain/entities/account/AccountTypes";
-import {AccountUpdateFirebaseDto} from "../dto/AccountUpdateFirebaseDto";
+import {AccountUpdateFirebaseDto} from "../dtos/AccountUpdateFirebaseDto";
 import {AccountUpdate} from "../../../../domain/entities/account/AccountUpdate";
-import {AccountFirebaseDto} from "../dto/AccountFirebaseDto";
+import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 import {Account} from "../../../../domain/entities/account/Account";
 import {UnidirectionalMapper} from "../../../utils/UnidirectionalMapper";
 

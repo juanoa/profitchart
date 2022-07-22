@@ -1,21 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {auth} from "../../config/firebase-config";
 import {useLogin} from "../../application";
-import {User} from "firebase/auth";
+import {Optional} from "../../domain/entities/Optional";
+import {User} from "../../domain/entities/authentication/User";
 
 interface Context {
   isLoggedIn: boolean;
   isLoading: boolean;
-  uid: string;
-  email: string | null;
+  user: Optional<User>;
   onLogin: (email: string, password: string) => void;
 }
 
 const AuthenticationContext = React.createContext<Context>({
   isLoggedIn: false,
   isLoading: true,
-  uid: "",
-  email: null,
+  user: {email: "", uid: ""},
   onLogin: () => {
   },
 })
@@ -29,17 +28,15 @@ interface Props {
 const AuthenticationProvider = ({children}: Props) => {
 
   const [checking, setChecking] = useState(true);
-  const [uid, setUid] = useState<string>("_");
-  const [email, setEmail] = useState<string | null>("");
+  const [user, setUser] = useState<User>();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = useLogin();
 
-  const setLoggedUser = (user: User | null) => {
+  const setLoggedUser = (user: Optional<User>) => {
     if (user) {
       setIsLoggedIn(true);
-      setUid(user.uid);
-      setEmail(user.email);
+      setUser(user);
     } else {
       setIsLoggedIn(false);
     }
@@ -47,7 +44,11 @@ const AuthenticationProvider = ({children}: Props) => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setLoggedUser(user);
+      if (user) {
+        setLoggedUser({uid: user.uid, email: user.email || ""})
+      } else {
+        setLoggedUser(null);
+      }
       setChecking(false);
     })
   }, []);
@@ -55,7 +56,7 @@ const AuthenticationProvider = ({children}: Props) => {
   const onLogin = (email: string, password: string) => {
     setChecking(true);
     login(email, password)
-      .then(({user}) => {
+      .then(user => {
         setLoggedUser(user);
       })
       .catch(() => {
@@ -71,8 +72,7 @@ const AuthenticationProvider = ({children}: Props) => {
       value={{
         isLoggedIn,
         isLoading: checking,
-        uid,
-        email,
+        user,
         onLogin,
       }}
     >

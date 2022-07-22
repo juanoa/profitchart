@@ -1,12 +1,13 @@
 import {UseCase} from "../../domain/entities/UseCase";
 import {useAuthentication} from "../../infrastructure/authentication/useAuthentication";
-import {UserCredential} from "firebase/auth";
+import {User} from "../../domain/entities/authentication/User";
+import {Optional} from "../../domain/entities/Optional";
 
-export const useLogin = (): UseCase<Promise<UserCredential>> => {
+export const useLogin = (): UseCase<Promise<Optional<User>>> => {
 
   const {login} = useAuthentication();
 
-  return (email: string, password: string) => {
-    return login(email, password);
+  return async (email: string, password: string) => {
+    return await login(email, password);
   }
 }

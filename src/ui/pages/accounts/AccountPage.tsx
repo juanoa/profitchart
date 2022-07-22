@@ -6,7 +6,7 @@ import {HistoricalAccountChart} from "../../components/accounts/HistoricalAccoun
 import {CreateUpdate} from "../../components/accounts/CreateUpdate";
 import PageLayout from "../../layout/PageLayout";
 import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
-import {useGetAccount} from "../../../application/accounts/useGetAccount";
+import {useGetAccount} from "../../../application";
 import {Optional} from "../../../domain/entities/Optional";
 import {Account} from "../../../domain/entities/account/Account";
 import {Loading} from "../../layout/Loading";
@@ -19,12 +19,12 @@ export const AccountPage = () => {
   const [account, setAccount] = useState<Optional<Account>>();
 
   const {id} = useParams<AccountPageParamsInterface>()
-  const {uid} = useAuthenticationContext();
+  const {user} = useAuthenticationContext();
 
   const getAccount = useGetAccount();
 
   useEffect(() => {
-    getAccount(id, uid)
+    getAccount(id, user?.uid)
       .then(account => setAccount(account));
   }, []);
 
