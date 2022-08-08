@@ -9,6 +9,10 @@
   z-index: 1030;
 }
 
+.navbar__links {
+  margin-top: 1.5rem;
+}
+
 .navbar__link {
   display: block;
   color: $white;
@@ -59,4 +63,10 @@
   color: $light-gray;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.navbar__netProfit {
+  color: white;
+  display: flex;
+  justify-content: center;
 }

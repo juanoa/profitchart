@@ -34,7 +34,7 @@ export const CreateUpdate = ({account}: Props) => {
   const {year, month, value} = formValues
 
   const isFormValid = () => {
-    return Number(value)
+    return Number(value) >= 0;
   }
 
   const handleForm = (e: any) => {
@@ -45,7 +45,6 @@ export const CreateUpdate = ({account}: Props) => {
         month,
         value: Number(value || 0)
       };
-      console.log(update)
       // TODO: Create update
     }
   }

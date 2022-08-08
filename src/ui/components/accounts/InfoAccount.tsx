@@ -35,7 +35,7 @@ export const InfoAccount = ({account}: Props) => {
       <div className="row">
         <div className="col-md-9">
           <p><b>{description}</b></p>
-          <div className="tag tag-green">{accountType?.name} {accountType?.emoji}</div>
+          <div className="tag tag-primary">{accountType?.name} {accountType?.emoji}</div>
           <p>{currency?.name}</p>
           <p>{new Date(date).toDateString()}</p>
         </div>

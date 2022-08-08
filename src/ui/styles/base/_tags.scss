@@ -6,7 +6,12 @@
   font-size: .8rem;
 }
 
-.tag-green {
+.tag-lg {
+  padding: .3rem .7rem;
+  font-size: 1rem;
+}
+
+.tag-primary {
   color: white;
   background-color: $light-primary;
 }
