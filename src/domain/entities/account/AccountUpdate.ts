@@ -1,5 +1,8 @@
-export interface AccountUpdate {
-  month: number,
-  year: number,
-  value: number
+import AccountUpdateDate from "./AccountUpdateDate";
+
+type AccountUpdate = {
+  value: number;
+  date: AccountUpdateDate;
 }
+
+export default AccountUpdate;

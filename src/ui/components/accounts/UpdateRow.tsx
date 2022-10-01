@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {getMonth} from "../../helpers/get-month";
-import {AccountUpdate} from "../../../domain/entities/account/AccountUpdate";
-import {Currency} from "../../../domain/entities/currency/Currency";
+import AccountUpdate from "../../../domain/entities/account/AccountUpdate";
 
 interface Props {
   update: AccountUpdate;
@@ -12,7 +11,7 @@ export const UpdateRow = ({update, currency}: Props) => {
 
   const [edit, setEdit] = useState(false);
 
-  const {year, month, value} = update
+  const {date: {year, month}, value} = update
 
   const showInput = () => {
     setEdit(true)

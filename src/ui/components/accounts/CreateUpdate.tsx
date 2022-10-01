@@ -6,8 +6,8 @@ import {SelectGroup} from "../ui/form/SelectGroup";
 import {Account} from "../../../domain/entities/account/Account";
 import {Currency} from "../../../domain/entities/currency/Currency";
 import {Optional} from "../../../domain/entities/Optional";
-import {AccountUpdate} from "../../../domain/entities/account/AccountUpdate";
 import {useCurrencyConfigRepository} from "../../hooks/useCurrencyConfigRepository";
+import AccountUpdate from "../../../domain/entities/account/AccountUpdate";
 
 interface Props {
   account: Account;
@@ -41,8 +41,7 @@ export const CreateUpdate = ({account}: Props) => {
     e.preventDefault();
     if (isFormValid()) {
       const update: AccountUpdate = {
-        year,
-        month,
+        date: {year, month},
         value: Number(value || 0)
       };
       // TODO: Create update

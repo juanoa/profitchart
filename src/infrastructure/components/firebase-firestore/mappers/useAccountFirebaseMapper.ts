@@ -1,10 +1,10 @@
 import {AccountTypesFirebaseDto} from "../dtos/AccountTypesFirebaseDto";
 import {AccountTypes} from "../../../../domain/entities/account/AccountTypes";
 import {AccountUpdateFirebaseDto} from "../dtos/AccountUpdateFirebaseDto";
-import {AccountUpdate} from "../../../../domain/entities/account/AccountUpdate";
 import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 import {Account} from "../../../../domain/entities/account/Account";
 import {UnidirectionalMapper} from "../../../utils/UnidirectionalMapper";
+import AccountUpdate from "../../../../domain/entities/account/AccountUpdate";
 
 export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebaseDto, Account> => {
   const mapAccountTypes = (type: AccountTypesFirebaseDto): AccountTypes => {
@@ -22,8 +22,10 @@ export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebase
 
   const mapAccountUpdate = (update: AccountUpdateFirebaseDto): AccountUpdate => {
     return {
-      month: Number(update.month),
-      year: Number(update.year),
+      date: {
+        month: Number(update.month),
+        year: Number(update.year),
+      },
       value: Number(update.value),
     }
   }

@@ -19,7 +19,7 @@ export const AccountUpdates = ({account}: Props) => {
           updatesClone.reverse().map(update =>
             <UpdateRow
               update={update} currency={currency}
-              key={`${update.year}${update.month}`}
+              key={`${update.date.year}${update.date.month}`}
             />
           )
         }

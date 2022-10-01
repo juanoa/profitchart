@@ -1,5 +1,5 @@
 import {AccountTypes} from "./AccountTypes";
-import {AccountUpdate} from "./AccountUpdate";
+import AccountUpdate from "./AccountUpdate";
 
 export interface Account {
   id: string;

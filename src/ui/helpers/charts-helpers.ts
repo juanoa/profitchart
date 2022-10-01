@@ -3,9 +3,9 @@ import {getTwoDecimals} from "./float-helpers";
 import {accountTypes} from "../../config/data/account-config";
 import {Account} from "../../domain/entities/account/Account";
 import {Optional} from "../../domain/entities/Optional";
-import {AccountUpdate} from "../../domain/entities/account/AccountUpdate";
 import {AccountType} from "../../domain/entities/account/AccountType";
 import {orderAccountUpdatesByDate} from "./date-helpers";
+import AccountUpdate from "../../domain/entities/account/AccountUpdate";
 
 export const getAccountsSum = (accounts: Array<Account>) => {
   const labels: Array<string> = [];
@@ -72,7 +72,7 @@ export const getAccountsForDoughnutChart = (accounts: Array<Account>) => {
 
   accounts.forEach(account => {
     const lastMonth = account.updates
-      .find(update => update.month === lastUpdate.month && update.year === lastUpdate.year);
+      .find(update => update.date.month === lastUpdate.date.month && update.date.year === lastUpdate.date.year);
 
     if (lastMonth) {
       labels.push(account.name);
@@ -100,7 +100,7 @@ export const getTypesAccountForDoughnutChart = (accounts: Array<Account>) => {
     let sum = 0;
     accountsFilter.forEach(account => {
       const lastMonth = account.updates
-        .find(update => update.month === lastUpdate.month && update.year === lastUpdate.year);
+        .find(update => update.date.month === lastUpdate.date.month && update.date.year === lastUpdate.date.year);
 
       if (lastMonth) {
         sum += lastMonth.value;
@@ -124,5 +124,5 @@ const getLastUpdate = (accounts: Array<Account>) => {
 }
 
 const getMonthYearString = (update: AccountUpdate) => {
-  return `${getSortMonth(Number(update.month))}. ${update.year}`
+  return `${getSortMonth(Number(update.date.month))}. ${update.date.year}`
 }
