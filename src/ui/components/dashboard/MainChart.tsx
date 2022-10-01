@@ -1,6 +1,6 @@
 import React from 'react'
 import {Bar} from "react-chartjs-2";
-import {getAccountsSum, getAccountSumWithLabels} from "../../helpers/charts-helpers";
+import {getAccountsSum, getAccountSumWithLabels, getMonthYearString} from "../../helpers/charts-helpers";
 import {Account} from "../../../domain/entities/account/Account";
 
 interface Props {
@@ -9,7 +9,8 @@ interface Props {
 
 export const MainChart = ({accounts}: Props) => {
 
-  const {labels, values} = getAccountsSum(accounts)
+  const updates = getAccountsSum(accounts)
+  const labels: Array<string> = updates.map(update => getMonthYearString(update));
 
   const data = {
     labels,
@@ -22,7 +23,7 @@ export const MainChart = ({accounts}: Props) => {
         borderWidth: 0,
         hoverBackgroundColor: 'rgba(128, 128, 128,0.4)',
         hoverBorderColor: 'rgba(128, 128, 128,1)',
-        data: values
+        data: updates.map(update => update.value)
       },
     ]
   };

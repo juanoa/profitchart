@@ -7,32 +7,32 @@ import {AccountType} from "../../domain/entities/account/AccountType";
 import {orderAccountUpdatesByDate} from "./date-helpers";
 import AccountUpdate from "../../domain/entities/account/AccountUpdate";
 
-export const getAccountsSum = (accounts: Array<Account>) => {
-  const labels: Array<string> = [];
-  const values: Array<number> = [];
+export const getAccountsSum = (accounts: Array<Account>): Array<AccountUpdate> => {
+  const totalUpdates: Array<AccountUpdate> = [];
 
   accounts.forEach(account => {
     if (!account.archived) {
       account.updates.forEach(update => {
-        const label = getMonthYearString(update);
-        const index = labels.findIndex(arrayLabel => arrayLabel === label);
+        const totalUpdateIndex = totalUpdates.findIndex(u => u.date.month === update.date.month && u.date.year === update.date.year);
 
-        if (index === -1) {
-          labels.push(label);
-          values.push(update.value);
+        if (totalUpdateIndex === -1) {
+          totalUpdates.push(update);
         } else {
-          values[index] += update.value;
+          const updateInIndex = totalUpdates[totalUpdateIndex]
+          totalUpdates[totalUpdateIndex] = {
+            ...updateInIndex,
+            value: updateInIndex.value + update.value
+          }
         }
-
       })
     }
   })
 
-  for (let i = 0; i < values.length; i++) {
-    values[i] = getTwoDecimals(String(values[i]));
+  for (let i = 0; i < totalUpdates.length; i++) {
+    totalUpdates[i].value = getTwoDecimals(String(totalUpdates[i].value));
   }
 
-  return {labels, values};
+  return orderAccountUpdatesByDate(totalUpdates);
 }
 
 export const getAccountSum = (account: Account) => {
@@ -123,6 +123,6 @@ const getLastUpdate = (accounts: Array<Account>) => {
   return updatesOrdered[updatesOrdered.length - 1]
 }
 
-const getMonthYearString = (update: AccountUpdate) => {
+export const getMonthYearString = (update: AccountUpdate) => {
   return `${getSortMonth(Number(update.date.month))}. ${update.date.year}`
 }
