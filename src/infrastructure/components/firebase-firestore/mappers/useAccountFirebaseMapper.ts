@@ -5,6 +5,7 @@ import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 import {Account} from "../../../../domain/entities/account/Account";
 import AccountUpdate from "../../../../domain/entities/account/AccountUpdate";
 import {BidirectionalMapper} from "../../../utils/BidirectionalMapper";
+import {sortAccountUpdateDatesEquals} from "../../../../domain/entities/account/AccountUpdateDate";
 
 export const useAccountFirebaseMapper = (): BidirectionalMapper<AccountFirebaseDto, Account> => {
   const mapAccountTypes = (type: AccountTypesFirebaseDto): AccountTypes => {
@@ -58,7 +59,7 @@ export const useAccountFirebaseMapper = (): BidirectionalMapper<AccountFirebaseD
         id: dto.id,
         name: dto.name,
         description: dto.description,
-        updates: dto.updates.map(mapAccountUpdate),
+        updates: dto.updates.map(mapAccountUpdate).sort((a, b) => sortAccountUpdateDatesEquals(a.date, b.date)),
         date: dto.date,
         color: dto.color,
         archived: dto.archived,

@@ -41,7 +41,7 @@ export const AccountPage = () => {
 
       <h2>Updates</h2>
       <CreateUpdate account={account} onChange={setAccount}/>
-      <AccountUpdates account={account}/>
+      <AccountUpdates account={account} onChange={setAccount}/>
     </PageLayout>
   );
 };

@@ -9,6 +9,7 @@ export const useGetNetProfit = (): UseCase<Promise<Number>> => {
 
   return async (uid: string) => {
     const accounts = await findByUser(uid);
-    return calculateNetProfit(accounts);
+    const netProfit: number = calculateNetProfit(accounts)
+    return Math.round(netProfit * 100) / 100;
   }
 }

@@ -31,3 +31,22 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.account__account-updates {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.account__account-update-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account__account-update-row-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+}
