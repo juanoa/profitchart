@@ -1,9 +1,7 @@
-.loading__container{
-  padding: 0;
+.loading__container {
   position: absolute;
-  text-align: center;
   top: 50%;
-  width: 100%;
+  left: 50%;
 }
 .loading__dot{
   animation: bounce 1.5s infinite linear;
