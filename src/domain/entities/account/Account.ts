@@ -1,7 +1,7 @@
 import {AccountTypes} from "./AccountTypes";
 import AccountUpdate from "./AccountUpdate";
 
-export interface Account {
+export type Account = {
   id: string;
   archived: boolean;
   color: string;
@@ -11,4 +11,9 @@ export interface Account {
   name: string;
   type: AccountTypes;
   updates: Array<AccountUpdate>
+}
+
+export const addUpdateToAccount = (account: Account, update: AccountUpdate): Account => {
+  const updates = [...account.updates, update];
+  return {...account, updates};
 }

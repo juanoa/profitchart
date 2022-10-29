@@ -9,17 +9,15 @@ interface Props {
 export const AccountUpdates = ({account}: Props) => {
   const {updates, currency} = account
 
-  const updatesClone = updates.slice()
-
   return (
     <div className="card">
       <table>
         <tbody>
         {
-          updatesClone.reverse().map(update =>
+          updates.reverse().map(update =>
             <UpdateRow
               update={update} currency={currency}
-              key={`${update.date.year}${update.date.month}`}
+              key={`${update.date.year}${update.date.month}${Math.random()}`}
             />
           )
         }

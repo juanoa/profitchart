@@ -16,7 +16,7 @@ interface AccountPageParamsInterface {
 }
 
 export const AccountPage = () => {
-  const [account, setAccount] = useState<Optional<Account>>();
+  const [account, setAccount] = useState<Account>();
 
   const {id} = useParams<AccountPageParamsInterface>()
   const {user} = useAuthenticationContext();
@@ -24,8 +24,7 @@ export const AccountPage = () => {
   const getAccount = useGetAccount();
 
   useEffect(() => {
-    getAccount(id, user?.uid)
-      .then(account => setAccount(account));
+    getAccount(id, user?.uid).then(setAccount);
   }, []);
 
   if (!account) {
@@ -41,7 +40,7 @@ export const AccountPage = () => {
       </div>
 
       <h2>Updates</h2>
-      <CreateUpdate account={account}/>
+      <CreateUpdate account={account} onChange={setAccount}/>
       <AccountUpdates account={account}/>
     </PageLayout>
   );

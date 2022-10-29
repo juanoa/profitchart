@@ -1,7 +1,7 @@
 import {AccountTypesFirebaseDto} from "./AccountTypesFirebaseDto";
 import {AccountUpdateFirebaseDto} from "./AccountUpdateFirebaseDto";
 
-export interface AccountFirebaseDto {
+export type AccountFirebaseDto = {
   id: string;
   archived: boolean;
   color: string;

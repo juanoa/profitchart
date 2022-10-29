@@ -1,4 +1,4 @@
-import {collection, doc, getDoc, getDocs, orderBy, query} from 'firebase/firestore/lite';
+import {collection, doc, getDoc, getDocs, orderBy, query, setDoc} from 'firebase/firestore/lite';
 import {db, firstLevelCollection} from "../../../../config/firebase-config";
 import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 
@@ -32,6 +32,11 @@ export const useAccountFirebaseDao = () => {
         ...accountSnap.data()
       }
       return account;
+    },
+
+    updateAccount: async (id: string, uid: string, account: AccountFirebaseDto): Promise<void> => {
+      const docRef = doc(db, `${uid}/${collectionName}`, id);
+      await setDoc(docRef, account);
     }
   }
 }

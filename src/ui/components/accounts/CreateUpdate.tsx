@@ -8,28 +8,33 @@ import {Currency} from "../../../domain/entities/currency/Currency";
 import {Optional} from "../../../domain/entities/Optional";
 import {useCurrencyConfigRepository} from "../../hooks/useCurrencyConfigRepository";
 import AccountUpdate from "../../../domain/entities/account/AccountUpdate";
+import {useAddUpdateToAccount} from "../../../application/accounts/useAddUpdateToAccount";
+import {useAuthenticationContext} from "../../contexts/AuthenticationContext";
 
 interface Props {
   account: Account;
+  onChange: (account: Account) => void;
 }
 
 interface CreateUpdateForm {
   year: number;
   month: number;
-  value: number | undefined;
+  value: string;
 }
 
-export const CreateUpdate = ({account}: Props) => {
+export const CreateUpdate = ({account, onChange}: Props) => {
 
+  const addUpdateToAccount = useAddUpdateToAccount();
   const currencyConfigRepository = useCurrencyConfigRepository()
+  const {user} = useAuthenticationContext();
 
   const currency: Optional<Currency> = currencyConfigRepository.getCurrencyByCode(account.currency);
 
   const today = new Date()
-  const [formValues, handleInputChanges] = useForm<CreateUpdateForm>({
+  const [formValues, handleInputChanges, reset] = useForm<CreateUpdateForm>({
     year: today.getFullYear(),
     month: today.getMonth(),
-    value: undefined
+    value: ""
   })
   const {year, month, value} = formValues
 
@@ -44,7 +49,11 @@ export const CreateUpdate = ({account}: Props) => {
         date: {year, month},
         value: Number(value || 0)
       };
-      // TODO: Create update
+      addUpdateToAccount(user?.uid, account, update)
+        .then(account => {
+          onChange(account);
+          reset();
+        });
     }
   }
 

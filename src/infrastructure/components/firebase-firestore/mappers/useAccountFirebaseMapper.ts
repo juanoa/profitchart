@@ -3,10 +3,10 @@ import {AccountTypes} from "../../../../domain/entities/account/AccountTypes";
 import {AccountUpdateFirebaseDto} from "../dtos/AccountUpdateFirebaseDto";
 import {AccountFirebaseDto} from "../dtos/AccountFirebaseDto";
 import {Account} from "../../../../domain/entities/account/Account";
-import {UnidirectionalMapper} from "../../../utils/UnidirectionalMapper";
 import AccountUpdate from "../../../../domain/entities/account/AccountUpdate";
+import {BidirectionalMapper} from "../../../utils/BidirectionalMapper";
 
-export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebaseDto, Account> => {
+export const useAccountFirebaseMapper = (): BidirectionalMapper<AccountFirebaseDto, Account> => {
   const mapAccountTypes = (type: AccountTypesFirebaseDto): AccountTypes => {
     switch (type) {
       case AccountTypesFirebaseDto.INVESTMENT:
@@ -15,6 +15,19 @@ export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebase
         return AccountTypes.SAVINGS;
       case AccountTypesFirebaseDto.OTHER:
         return AccountTypes.OTHER;
+      default:
+        throw new Error("Account type " + String(type) + "does not exit.");
+    }
+  }
+
+  const reverseAccountTypes = (type: AccountTypes): AccountTypesFirebaseDto => {
+    switch (type) {
+      case AccountTypes.INVESTMENT:
+        return AccountTypesFirebaseDto.INVESTMENT;
+      case AccountTypes.SAVINGS:
+        return AccountTypesFirebaseDto.SAVINGS;
+      case AccountTypes.OTHER:
+        return AccountTypesFirebaseDto.OTHER;
       default:
         throw new Error("Account type " + String(type) + "does not exit.");
     }
@@ -30,6 +43,14 @@ export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebase
     }
   }
 
+  const reverseAccountUpdate = (update: AccountUpdate): AccountUpdateFirebaseDto => {
+    return {
+      month: update.date.month,
+      year: update.date.year,
+      value: update.value,
+    }
+  }
+
   return {
     map: (dto: AccountFirebaseDto): Account => {
       return {
@@ -37,11 +58,24 @@ export const useAccountFirebaseMapper = (): UnidirectionalMapper<AccountFirebase
         id: dto.id,
         name: dto.name,
         description: dto.description,
-        updates: dto.updates.map(update => mapAccountUpdate(update)),
+        updates: dto.updates.map(mapAccountUpdate),
         date: dto.date,
         color: dto.color,
         archived: dto.archived,
         currency: dto.currency,
+      }
+    },
+    reverse: (entity: Account): AccountFirebaseDto => {
+      return {
+        id: entity.id,
+        name: entity.name,
+        type: reverseAccountTypes(entity.type),
+        date: entity.date,
+        color: entity.color,
+        archived: entity.archived,
+        currency: entity.currency,
+        description: entity.description,
+        updates: entity.updates.map(reverseAccountUpdate)
       }
     }
   }

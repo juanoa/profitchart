@@ -1,11 +1,10 @@
 import {UseCase} from "../../domain/entities/UseCase";
 import {Account} from "../../domain/entities/account/Account";
-import {useAccountRepository} from "../../infrastructure/repositories/useAccountRepository";
-import {Optional} from "../../domain/entities/Optional";
+import {useAccountAdapter} from "../../infrastructure/adapters/useAccountAdapter";
 
-export const useGetAccount = (): UseCase<Promise<Optional<Account>>> => {
+export const useGetAccount = (): UseCase<Promise<Account>> => {
 
-  const {findByIdAndByUserId} = useAccountRepository();
+  const {findByIdAndByUserId} = useAccountAdapter();
 
   return async (accountId: string, uid: string) => {
     return await findByIdAndByUserId(accountId, uid);

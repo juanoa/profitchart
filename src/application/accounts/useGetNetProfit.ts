@@ -1,10 +1,10 @@
 import {UseCase} from "../../domain/entities/UseCase";
-import {useAccountRepository} from "../../infrastructure/repositories/useAccountRepository";
+import {useAccountAdapter} from "../../infrastructure/adapters/useAccountAdapter";
 import {useNetProfitCalculator} from "../services/accounts/useNetProfitCalculator";
 
 export const useGetNetProfit = (): UseCase<Promise<Number>> => {
 
-  const {findByUser} = useAccountRepository();
+  const {findByUser} = useAccountAdapter();
   const calculateNetProfit = useNetProfitCalculator();
 
   return async (uid: string) => {
