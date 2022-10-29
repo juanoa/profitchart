@@ -35,11 +35,11 @@ export const getAccountsSum = (accounts: Array<Account>): Array<AccountUpdate> =
   return orderAccountUpdatesByDate(totalUpdates);
 }
 
-export const getAccountSum = (account: Account) => {
+export const getAccountSum = (updates: Array<AccountUpdate>) => {
   const labels: Array<string> = []
   const values: Array<number> = []
 
-  account.updates.forEach(update => {
+  updates.forEach(update => {
     const label = getMonthYearString(update);
     labels.push(label);
     values.push(update.value);

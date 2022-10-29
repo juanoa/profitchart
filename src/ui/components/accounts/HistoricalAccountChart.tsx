@@ -13,7 +13,7 @@ export const HistoricalAccountChart = ({account, tooltips = true, xAxes = true}:
 
   const {color} = account
 
-  const {labels, values} = getAccountSum(account)
+  const {labels, values} = getAccountSum(account.updates.filter(update => update.value !== 0));
   const data = {
     labels,
     datasets: [
