@@ -1,17 +1,12 @@
 import React from 'react'
-import {Provider} from 'react-redux'
-
-import {AppRouter} from "./router/AppRouter";
-import {store} from "./store/store";
-
-import './styles/styles.scss'
+import { AppRouter } from './ui/router/AppRouter'
+import './ui/styles/styles.scss'
+import AuthenticationProvider from './ui/contexts/AuthenticationContext'
 
 export const App = () => {
-    return (
-        <>
-            <Provider store={store}>
-                <AppRouter />
-            </Provider>
-        </>
-    );
+  return (
+    <AuthenticationProvider>
+      <AppRouter/>
+    </AuthenticationProvider>
+  )
 }
