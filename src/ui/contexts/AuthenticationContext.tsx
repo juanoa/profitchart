@@ -5,14 +5,12 @@ import {Optional} from "../../domain/entities/Optional";
 import {User} from "../../domain/entities/authentication/User";
 
 interface Context {
-  isLoggedIn: boolean;
   isLoading: boolean;
   user: Optional<User>;
   onLogin: (email: string, password: string) => void;
 }
 
 const AuthenticationContext = React.createContext<Context>({
-  isLoggedIn: false,
   isLoading: true,
   user: {email: "", uid: ""},
   onLogin: () => {
@@ -23,9 +21,10 @@ export const useAuthenticationContext = () => useContext(AuthenticationContext);
 
 interface Props {
   children: React.ReactNode,
+  loginComponent: React.ReactNode,
 }
 
-const AuthenticationProvider = ({children}: Props) => {
+const AuthenticationProvider = ({children, loginComponent}: Props) => {
 
   const [checking, setChecking] = useState(true);
   const [user, setUser] = useState<User>();
@@ -70,13 +69,14 @@ const AuthenticationProvider = ({children}: Props) => {
   return (
     <AuthenticationContext.Provider
       value={{
-        isLoggedIn,
         isLoading: checking,
         user,
         onLogin,
       }}
     >
-      {children}
+      {
+        isLoggedIn ? children : loginComponent
+      }
     </AuthenticationContext.Provider>
   );
 };
